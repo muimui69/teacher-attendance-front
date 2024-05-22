@@ -1,0 +1,14 @@
+<nav class="grid items-start gap-2">
+  @for ( item of sidebarItems; track $index) {
+  <a
+    [routerLink]="item.path"
+    routerLinkActive="bg-accent"
+    class="text-4xl"
+  >
+    <span
+      class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
+      <span>{{item.path}}</span>
+    </span>
+  </a>
+  }
+</nav>
