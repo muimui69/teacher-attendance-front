@@ -4439,6 +4439,13 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lucide-angular@^0.379.0:
+  version "0.379.0"
+  resolved "https://registry.yarnpkg.com/lucide-angular/-/lucide-angular-0.379.0.tgz#c102f374cc401608d1deb789320bba3c1cf35f3c"
+  integrity sha512-Thc4Waah/vt8sq3C6BVTCNskBV96ITQY85jE3b/X/NDJAu8dpwm2RBS8EFUC8ZMZF3tIrzPMEiP6J8shqOzUCQ==
+  dependencies:
+    tslib "^2.3.0"
+
 magic-string@0.30.8:
   version "0.30.8"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.8.tgz#14e8624246d2bedba70d5462aa99ac9681844613"
