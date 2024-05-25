@@ -34,6 +34,38 @@ export const routes: Routes = [
                     icon:'subject'
                 }
             },
+            {
+                path: 'modalidad',
+                title: 'Modalidades',
+                loadComponent: () => import('./dashboard/pages/modalidad/modalidad.component'),
+                data:{
+                    icon:'graduation'
+                }
+            },
+            {
+                path: 'aula',
+                title: 'Aulas',
+                loadComponent: () => import('./dashboard/pages/aula/aula.component'),
+                data:{
+                    icon:'door'
+                }
+            },
+            {
+                path: 'modulo',
+                title: 'Modulos',
+                loadComponent: () => import('./dashboard/pages/modulo/modulo.component'),
+                data:{
+                    icon:'university'
+                }
+            },
+            {
+                path: 'reporte',
+                title: 'Reportes',
+                loadComponent: () => import('./dashboard/pages/reporte/reporte.component'),
+                data:{
+                    icon:'file'
+                }
+            },
         ]
     }, {
         path: '',

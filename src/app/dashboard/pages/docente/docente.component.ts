@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TitleComponent } from '@shared/title/title.component';
 
 @Component({
   selector: 'app-docente',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TitleComponent],
   templateUrl: './docente.component.html',
-  styles: ``
 })
+
 export default class DocenteComponent {
 
 }
