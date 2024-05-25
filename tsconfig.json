@@ -1,9 +1,16 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@shared/*":["./src/app/shared/*"], 
+      "@shared/*": [
+        "./src/app/shared/*"
+      ],
+      "@components/*":[
+        "./components/ui/*"
+      ],
+      "@spartan-ng/ui-button-helm": [
+        ".\\components/ui-button-helm/src/index.ts"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
@@ -24,7 +31,7 @@
     "lib": [
       "ES2022",
       "dom"
-    ],
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

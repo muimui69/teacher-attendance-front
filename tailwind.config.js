@@ -77,4 +77,5 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  presets: [require('@spartan-ng/ui-core/hlm-tailwind-preset')],
 }

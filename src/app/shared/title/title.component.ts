@@ -9,6 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 
 export class TitleComponent {
-  @Input() heading!: string;
+  @Input({ required: true }) heading!: string;
   @Input() text?: string;
 }
