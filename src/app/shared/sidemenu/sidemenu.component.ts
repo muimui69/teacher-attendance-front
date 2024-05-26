@@ -20,10 +20,11 @@ export class SidemenuComponent {
     .map(r => ({
       ...r,
       icon: this.iconService.getIcon(r.data?.['icon']),
-      isExpanded: false,
+      isExpanded: true,
       children: r.children ? r.children.map(c => ({
         ...c,
-        path: `${r.path}/${c.path}`
+        path: `${r.path}/${c.path}`,
+        icon_child: this.iconService.getIcon(c.data?.['icon']),
       })) : null
     }));
 
@@ -37,23 +38,25 @@ export class SidemenuComponent {
     return index;
   }
 
-  constructor(public iconService: IconService) { 
 
-    const menu =  routes
-    .map(r => r.children ?? []).flat()
-    .filter(r => r && r.path)
-    .filter(r => r && !r.path?.includes(':'))
-    .map(r => ({
-      ...r,
-      icon: this.iconService.getIcon(r.data?.['icon']),
-      isExpanded: false,
-      children: r.children ? r.children.map(c => ({
-        ...c,
-        path: `${r.path}/${c.path}`
-      })) : null
-    }));
+  constructor(public iconService: IconService) {
 
-    console.log('>>>>>>>>>>>>>>>>>>>',menu)
+    // const menu = routes
+    //   .map(r => r.children ?? []).flat()
+    //   .filter(r => r && r.path)
+    //   .filter(r => r && !r.path?.includes(':'))
+    //   .map(r => ({
+    //     ...r,
+    //     icon: this.iconService.getIcon(r.data?.['icon']),
+    //     isExpanded: true,
+    //     children: r.children ? r.children.map(c => ({
+    //       ...c,
+    //       path: `${r.path}/${c.path}`,
+    //       icon_chld: this.iconService.getIcon(c.data?.['icon']),
+    //     })) : null
+    //   }));
+
+    // console.log('>>>>>>>>>>>>>>>>>>>', menu)
   }
 
 

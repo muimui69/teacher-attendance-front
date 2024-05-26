@@ -24,9 +24,10 @@ export const routes: Routes = [
                         loadComponent: () => import("./dashboard/pages/docente/asignar-materia/asignar-materia.component"),
                         data: {
                             icon: 'user'
-                        }
+                        },
                     }
-                ]
+                ],
+
             },
             {
                 path: 'materia',
@@ -43,7 +44,7 @@ export const routes: Routes = [
                 data: {
                     icon: 'subject'
                 },
-                 children: [
+                children: [
                     {
                         path: 'asignar-materia',
                         title: 'Asignar Materia a Carrera',
