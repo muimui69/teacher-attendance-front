@@ -19,11 +19,42 @@ export class SidemenuComponent {
     .filter(r => r && !r.path?.includes(':'))
     .map(r => ({
       ...r,
-      icon: this.iconService.getIcon(r.data?.['icon'])
+      icon: this.iconService.getIcon(r.data?.['icon']),
+      isExpanded: false,
+      children: r.children ? r.children.map(c => ({
+        ...c,
+        path: `${r.path}/${c.path}`
+      })) : null
     }));
 
+  toggleSubMenu(item: any): void {
+    if (item.children) {
+      item.isExpanded = !item.isExpanded;
+    }
+  }
 
-  constructor(public iconService: IconService) { }
+  trackByIndex(index: number): number {
+    return index;
+  }
+
+  constructor(public iconService: IconService) { 
+
+    const menu =  routes
+    .map(r => r.children ?? []).flat()
+    .filter(r => r && r.path)
+    .filter(r => r && !r.path?.includes(':'))
+    .map(r => ({
+      ...r,
+      icon: this.iconService.getIcon(r.data?.['icon']),
+      isExpanded: false,
+      children: r.children ? r.children.map(c => ({
+        ...c,
+        path: `${r.path}/${c.path}`
+      })) : null
+    }));
+
+    console.log('>>>>>>>>>>>>>>>>>>>',menu)
+  }
 
 
 }
