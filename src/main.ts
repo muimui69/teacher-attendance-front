@@ -10,7 +10,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
 import { LucideAngularModule } from 'lucide-angular';
-import { IconService } from './app/services/icon.service';
+import { IconService } from './app/shared/services/icon.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const iconService = new IconService();
 const icons = iconService.getIcons();
@@ -19,7 +20,7 @@ const extendedAppConfig = {
   ...appConfig,
   providers: [
     ...appConfig.providers,
-    { provide: LucideAngularModule, useValue: LucideAngularModule.pick(icons) }
+    { provide: LucideAngularModule, useValue: LucideAngularModule.pick(icons) }, provideAnimationsAsync()
   ]
 };
 

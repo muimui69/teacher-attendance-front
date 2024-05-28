@@ -8,9 +8,9 @@
       "@components/*":[
         "./components/ui/*"
       ],
-      "@spartan-ng/ui-button-helm": [
-        ".\\components/ui-button-helm/src/index.ts"
-      ]
+      "@environments/*": [
+        "./src/environments/*"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

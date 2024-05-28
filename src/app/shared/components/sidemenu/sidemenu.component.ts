@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { routes } from '../../app.routes';
-import { RouterModule, Routes } from '@angular/router';
-import { IconService } from '../../services/icon.service';
+import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
+import { IconService } from '../../services/icon.service';
+import { routes } from '../../../app.routes';
 
 @Component({
   selector: 'app-sidemenu',
@@ -71,7 +71,7 @@ export class SidemenuComponent {
     return Object.values(routeMap);
   }
 
-  public sidebarItems = this.organizeRoutes(routes.find(route => route.path === 'dashboard')?.children || []).map(route => ({
+  public sidebarItems = this.organizeRoutes(routes.find(route => route)?.children || []).map(route => ({
     ...route,
     icon: this.iconService.getIcon(route.data?.icon),
     isExpanded: false,
