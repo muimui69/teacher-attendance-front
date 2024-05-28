@@ -7,6 +7,9 @@ import {
   DoorOpen,
   University,
   FileText,
+  ChevronDown,
+  ChevronRight,
+  CirclePlus,
 } from 'lucide-angular';
 import { LucideIcons } from 'lucide-angular/icons/types';
 
@@ -22,7 +25,10 @@ export class IconService {
     graduation: GraduationCap,
     door: DoorOpen,
     university: University,
-    file: FileText
+    file: FileText,
+    chevronDown:ChevronDown,
+    chevronRight:ChevronRight,
+    circlePlus:CirclePlus
   };
 
   constructor() { }

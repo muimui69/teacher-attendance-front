@@ -17,17 +17,23 @@ export const routes: Routes = [
                 data: {
                     icon: 'user'
                 },
-                children: [
-                    {
-                        path: 'asignar-materia',
-                        title: 'Asignar Materia Docente',
-                        loadComponent: () => import("./dashboard/pages/docente/asignar-materia/asignar-materia.component"),
-                        data: {
-                            icon: 'user'
-                        },
-                    }
-                ],
 
+            },
+            {
+                path: 'docente/asignar-materia-docente',
+                title: 'Asignar Materia',
+                loadComponent: () => import("./dashboard/pages/docente/asignar-materia-docente/asignar-materia-docente.component"),
+                data: {
+                    icon: 'circlePlus'
+                },
+            },
+            {
+                path: 'docente/asignar-horario-docente',
+                title: 'Asignar Horario',
+                loadComponent: () => import("./dashboard/pages/docente/asignar-horario-docente/asignar-horario-docente.component"),
+                data: {
+                    icon: 'circlePlus'
+                },
             },
             {
                 path: 'materia',
@@ -44,16 +50,14 @@ export const routes: Routes = [
                 data: {
                     icon: 'subject'
                 },
-                children: [
-                    {
-                        path: 'asignar-materia',
-                        title: 'Asignar Materia a Carrera',
-                        loadComponent: () => import("./dashboard/pages/carrera/asignar-materia/asignar-materia.component"),
-                        data: {
-                            icon: 'user'
-                        }
-                    }
-                ]
+            },
+            {
+                path: 'carrera/asignar-materia',
+                title: 'Asignar Materia',
+                loadComponent: () => import("./dashboard/pages/carrera/asignar-materia/asignar-materia-carrera.component"),
+                data: {
+                    icon: 'circlePlus'
+                }
             },
             {
                 path: 'modalidad',
@@ -77,6 +81,14 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/modulo/modulo.component'),
                 data: {
                     icon: 'university'
+                }
+            },
+            {
+                path: 'modulo/asignar-aula',
+                title: 'Asignar Aula',
+                loadComponent: () => import('./dashboard/pages/modulo/asignar-aula/asignar-aula.component'),
+                data: {
+                    icon: 'circlePlus'
                 }
             },
             {

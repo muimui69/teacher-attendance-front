@@ -15,20 +15,25 @@
 
 
 <nav class="grid items-start gap-2">
-  <ng-container *ngFor="let item of sidebarItems; trackBy: trackByIndex">
+  <ng-container *ngFor="let item of sidebarItems; let i = index;">
     <a [routerLink]="item.path" routerLinkActive="bg-accent" class="text-4xl">
       <span class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
         <lucide-icon [name]="item.icon" class="md:lg:mr-2 h-4 w-4"></lucide-icon>
         <span class="capitalize">{{item.title}}</span>
-      </span>
+        <lucide-icon 
+          [name]="item.isExpanded ?  this.getIconData('chevronDown') :  this.getIconData('chevronRight')"
+          class="ml-auto" 
+          *ngIf="item.children.length>0" 
+          (click)="toggleSubMenu(item)">
+        </lucide-icon>   
+      </span> 
     </a>
-    <!-- Show children elements if the menu is expanded -->
-    <ng-container *ngIf="item.children">
+    <ng-container *ngIf="item.children && item.isExpanded">
       <ul>
-        <li *ngFor="let child of item.children; trackBy: trackByIndex">
+        <li *ngFor="let child of item.children">
           <a [routerLink]="child.path" routerLinkActive="bg-accent" class="text-4xl">
-            <span class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
-              <lucide-icon [name]="child.icon_child" class="md:lg:mr-2 h-4 w-4"></lucide-icon>
+            <span class="group flex items-center rounded-md px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
+              <lucide-icon [name]="child.icon" class="md:lg:mr-2 h-4 w-4"></lucide-icon>
               <span class="capitalize">{{child.title}}</span>
             </span>
           </a>
@@ -37,4 +42,6 @@
     </ng-container>
   </ng-container>
 </nav>
+
+
 
