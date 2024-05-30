@@ -1,0 +1,22 @@
+<form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="w-full">
+        <mat-label>Correo: </mat-label>
+        <input matInput formControlName="email" placeholder="name@gmail.com" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+        <mat-label>Contraseña:</mat-label>
+        <input matInput formControlName="password" type="password"
+            placeholder="******" />
+    </mat-form-field>
+
+    <div class="w-full">
+        <button mat-raised-button class="w-full" color="primary" type="submit" [disabled]="isLoading">
+            <div class="flex items-center">
+                <span>Iniciar sesión</span>
+                <mat-spinner class="ml-2" *ngIf="isLoading" diameter="20"></mat-spinner>
+            </div>
+        </button>
+    </div>
+    
+</form>

@@ -15,6 +15,7 @@
 
 
 <nav class="grid items-start gap-2">
+
   <ng-container *ngFor="let item of sidebarItems; let i = index;">
     <a [routerLink]="item.path" routerLinkActive="bg-accent" class="text-4xl">
       <span class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
@@ -45,3 +46,20 @@
 
 
 
+
+<!-- sidebar.component.html -->
+<!-- <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button mat-icon-button disabled></button>
+    <mat-icon>{{ node.icon }}</mat-icon>
+    <a [routerLink]="node.path" routerLinkActive="bg-accent">{{ node.name }}</a>
+  </mat-tree-node>
+
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle (click)="toggleSubMenu(node)"> -->
+      <!-- <mat-icon>{{ getIcon(node) }}</mat-icon> -->
+    <!-- </button>
+    <mat-icon>{{ node.icon }}</mat-icon>
+    <a [routerLink]="node.path" routerLinkActive="bg-accent">{{ node.name }}</a>
+  </mat-tree-node>
+</mat-tree> -->

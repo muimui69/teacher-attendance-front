@@ -4,11 +4,16 @@ import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { IconService } from '../../services/icon.service';
 import { routes } from '../../../app.routes';
+import { SidemenuTreeComponent } from '../sidemenu-tree/sidemenu-tree.component';
+import { TreeNode } from '../sidemenu-tree/example-data';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTree, MatTreeNestedDataSource, MatTreeNode } from '@angular/material/tree';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sidemenu',
   standalone: true,
-  imports: [CommonModule, RouterModule, LucideAngularModule],
+  imports: [CommonModule, RouterModule, LucideAngularModule,MatTree,MatTreeNode,MatIcon],
   templateUrl: './sidemenu.component.html',
 })
 
@@ -28,6 +33,10 @@ export class SidemenuComponent {
   //     })) : null
   //   }));
 
+  
+  
+  constructor(private iconService: IconService) { }
+  
   toggleSubMenu(item: any): void {
     if (item.children) {
       item.isExpanded = !item.isExpanded;
@@ -37,10 +46,6 @@ export class SidemenuComponent {
   trackByIndex(index: number): number {
     return index;
   }
-
-
-  constructor(private iconService: IconService) { }
-
 
   public getIconData(name: string): any {
     const icon = this.iconService.getIcon(name);
@@ -82,6 +87,52 @@ export class SidemenuComponent {
     }))
   }));
 
+  // treeControl = new NestedTreeControl<TreeNode>(node => node.children);
+  // dataSource = new MatTreeNestedDataSource<TreeNode>();
 
+  // sidebarItems: TreeNode[] = [
+  //   {
+  //     name: 'Dashboard',
+  //     path: '/dashboard',
+  //     icon: 'dashboard',
+  //     children: []
+  //   },
+  //   {
+  //     name: 'Settings',
+  //     path: '/settings',
+  //     icon: 'settings',
+  //     isExpanded: false,
+  //     children: [
+  //       {
+  //         name: 'Profile',
+  //         path: '/settings/profile',
+  //         icon: 'person',
+  //         children: []
+  //       },
+  //       {
+  //         name: 'Security',
+  //         path: '/settings/security',
+  //         icon: 'security',
+  //         children: []
+  //       }
+  //     ]
+  //   }
+  // ];
+
+  // constructor() {
+  //   this.dataSource.data = this.sidebarItems;
+  // }
+
+  // hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
+
+  // toggleSubMenu(node: TreeNode) {
+  //   node.isExpanded = !node.isExpanded;
+  //   if (node.isExpanded) {
+  //     this.treeControl.expand(node);
+  //   } else {
+  //     this.treeControl.collapse(node);
+  //   }
+  // }
+  
 }
 

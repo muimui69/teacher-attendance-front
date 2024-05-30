@@ -11,6 +11,9 @@
       "@environments/*": [
         "./src/environments/*"
       ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
