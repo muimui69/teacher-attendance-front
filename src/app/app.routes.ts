@@ -4,7 +4,6 @@ export const routes: Routes = [
     {
         path: '',
         loadComponent:()=> import('./auth/login/login.component'),
-        pathMatch:'full'
     },
     {
         path: 'dashboard',
