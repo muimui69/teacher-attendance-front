@@ -1,7 +1,7 @@
 <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="w-full">
         <mat-label>Correo: </mat-label>
-        <input matInput formControlName="email" placeholder="name@gmail.com" />
+        <input matInput formControlName="username" placeholder="name@gmail.com" />
     </mat-form-field>
 
     <mat-form-field class="w-full">
@@ -18,5 +18,5 @@
             </div>
         </button>
     </div>
-    
+
 </form>
