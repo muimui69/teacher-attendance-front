@@ -10,6 +10,7 @@ import ModalidadComponent from './pages/modalidad/modalidad.component';
 import AulaComponent from './pages/aula/aula.component';
 import ModuloComponent from './pages/modulo/modulo.component';
 import AsignarAulaComponent from './pages/modulo/asignar-aula/asignar-aula.component';
+import { CreateDocenteComponent } from '@shared/components/docente/create-docente/create-docente.component';
 
 export const routes: Routes = [
     {
@@ -25,7 +26,7 @@ export const routes: Routes = [
                 path: 'docente',
                 title: 'Docentes',
                 data: {
-                    icon: 'user'
+                    icon: 'user',
                 },
                 children: [
                     {
@@ -36,10 +37,13 @@ export const routes: Routes = [
                         path: 'asignar-materia-docente',
                         title: 'Asignar Materia',
                         component: AsignarMateriaDocenteComponent,
-                        data: {
-                            icon: 'circlePlus'
-                        }
-                    }
+                    },
+                    {
+                        path: 'create',
+                        title: 'Crear docente',
+                        component: CreateDocenteComponent,
+                    },
+
                 ]
             },
             {
@@ -47,14 +51,14 @@ export const routes: Routes = [
                 title: 'Materias',
                 component: MateriaComponent,
                 data: {
-                    icon: 'book'
+                    icon: 'book',
                 }
             },
             {
                 path: 'carrera',
                 title: 'Carreras',
                 data: {
-                    icon: 'subject'
+                    icon: 'subject',
                 },
                 children: [
                     {
@@ -65,9 +69,6 @@ export const routes: Routes = [
                         path: 'asignar-materia-carrera',
                         title: 'Asignar Materia',
                         component: AsignarMateriaCarreraComponent,
-                        data: {
-                            icon: 'circlePlus'
-                        }
                     }
                 ]
             },
@@ -102,15 +103,13 @@ export const routes: Routes = [
                         path: 'asignar-aula',
                         title: 'Asignar Aula',
                         component: AsignarAulaComponent,
-                        data: {
-                            icon: 'circlePlus'
-                        }
                     }
                 ]
             }
         ]
     }
 ];
+
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

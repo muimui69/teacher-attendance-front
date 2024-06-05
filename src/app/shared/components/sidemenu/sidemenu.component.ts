@@ -124,7 +124,7 @@ export class SidemenuComponent {
   public getFullPath(itemPath: string, childPath: string): string {
     return `${itemPath}/${childPath}`;
   }
-  
+
 
   private organizeRoutes(routes: any[]): MenuItem[] {
     return routes

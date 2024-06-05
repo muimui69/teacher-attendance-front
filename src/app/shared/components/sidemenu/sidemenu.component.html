@@ -12,7 +12,7 @@
           [name]="item.icon ?  this.getIconData('chevronDown') :  this.getIconData('chevronRight')"
           (click)="toggleSubMenu(item)"
           class="ml-auto"
-          *ngIf="item.children && item.children.length > 0">
+          >
         </lucide-icon>
 
       </span>
@@ -30,7 +30,8 @@
       <ul>
         <li *ngFor="let child of item.children">
           <a [routerLink]="child.path" routerLinkActive="bg-accent"
-            class="text-4xl">
+            class="text-4xl"
+            >
             <span
               class="group flex items-center rounded-md px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
            

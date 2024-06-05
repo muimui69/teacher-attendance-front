@@ -27,6 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -59,7 +60,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTabsModule,
     MatCheckboxModule,
     MatTreeModule,
-    
+    MatDividerModule
   ]
 })
 
