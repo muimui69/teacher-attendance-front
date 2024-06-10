@@ -38,12 +38,6 @@ export const routes: Routes = [
                         title: 'Asignar Materia',
                         component: AsignarMateriaDocenteComponent,
                     },
-                    {
-                        path: 'create',
-                        title: 'Crear docente',
-                        component: CreateDocenteComponent,
-                    },
-
                 ]
             },
             {
