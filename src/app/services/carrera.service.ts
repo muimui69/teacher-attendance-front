@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api/api.service';
-import { Observable } from 'rxjs';
-import { GetCarreraResponse } from '../interfaces/carrera.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { GetCarreraByID, GetCarreraResponse, PostCarreraParams } from '../interfaces/carrera.interface';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,26 +10,38 @@ import { GetCarreraResponse } from '../interfaces/carrera.interface';
 export class CarreraService {
 
   private endpoint = 'carrera'; // Define el endpoint para la entidad Materia
+  private _data = new BehaviorSubject<GetCarreraResponse | null>(null);
+  public data$ = this._data.asObservable();
 
   constructor(private apiService: ApiService) {} 
 
   getAll(): Observable<GetCarreraResponse> {
-    return this.apiService.get<GetCarreraResponse>(`${this.endpoint}`);
+    return this.apiService.get<GetCarreraResponse>(`${this.endpoint}`).pipe(
+      tap(data => this._data.next(data))
+    );
   }
 
-  // getById(id: number): Observable<any> {
-  //   return this.apiService.get<any>(`${this.endpoint}/${id}`);
-  // }
+  getById(id: number): Observable<GetCarreraByID> {
+    return this.apiService.get<GetCarreraByID>(`${this.endpoint}/${id}`);
+  }
 
-  // create(asistencia: PostAsistenciaParams): Observable<any> {
-  //   return this.apiService.post<any, PostAsistenciaParams>(this.endpoint, asistencia);
-  // }
+  create(carrera: PostCarreraParams): Observable<any> {
+    return this.apiService.post<any, PostCarreraParams>(this.endpoint, carrera).pipe(
+      tap(() => this.refreshData())
+    );
+  }
 
-  // update(id: number, asistencia: any): Observable<any> {
-  //   return this.apiService.put<any, any>(`${this.endpoint}/${id}`, asistencia);
-  // }
+  update(id: number, carrera: PostCarreraParams): Observable<any> {
+    return this.apiService.patch<any, any>(`${this.endpoint}/${id}`, carrera);
+  }
 
-  // delete(id: number): Observable<any> {
-  //   return this.apiService.delete<any>(`${this.endpoint}/${id}`);
-  // }
+  delete(id: number): Observable<void> {
+    return this.apiService.delete<any>(`${this.endpoint}/${id}`).pipe(
+      tap(() => this.refreshData())
+    );
+  }
+  
+  private refreshData(): void {
+    this.getAll().subscribe();
+  }
 }

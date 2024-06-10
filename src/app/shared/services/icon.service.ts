@@ -10,6 +10,8 @@ import {
   ChevronDown,
   ChevronRight,
   CirclePlus,
+  Trash2,
+  Pencil
 } from 'lucide-angular';
 import { LucideIcons } from 'lucide-angular/icons/types';
 
@@ -28,7 +30,9 @@ export class IconService {
     file: FileText,
     chevronDown:ChevronDown,
     chevronRight:ChevronRight,
-    circlePlus:CirclePlus
+    circlePlus:CirclePlus,
+    delete:Trash2,
+    edit:Pencil
   };
 
   constructor() { }

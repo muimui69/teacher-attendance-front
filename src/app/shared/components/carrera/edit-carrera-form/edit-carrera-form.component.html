@@ -1,22 +1,20 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()" class="flex justify-center items-center h-[100vh]">
-  <mat-card class="rounded-md border shadow-xl" >
+  <mat-card class="rounded-md border shadow-xl">
     <mat-card-header>
-      <mat-card-title>Crear carrera</mat-card-title>
+      <mat-card-title>Editar carrera</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="nombre" formControlName="nombre">
-            @if (addressForm.controls['nombre'].hasError('required')) {
-              <mat-error>Nombre es de la carrera es <strong>requerido</strong></mat-error>
-            }
+            <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">Nombre de la carrera es <strong>requerido</strong></mat-error>
           </mat-form-field>
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent" type="submit">Guardar carrera</button>
+      <button mat-raised-button color="accent" type="submit">Guardar cambios</button>
     </mat-card-actions>
   </mat-card>
 </form>

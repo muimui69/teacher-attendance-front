@@ -12,3 +12,16 @@ export interface Datum {
     id:     number;
     nombre: string;
 }
+
+
+export interface GetCarreraByID {
+    statusCode: number;
+    message:    string;
+    data:       Data;
+}
+
+export interface Data {
+    id:     number;
+    nombre: string;
+}
+
