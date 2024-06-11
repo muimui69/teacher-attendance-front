@@ -1,40 +1,40 @@
-<!-- <nav class="grid items-start gap-2">
-  @for ( item of sidebarItems; track $index) {
-  <a
-    [routerLink]="item.path"
-    routerLinkActive="bg-accent"
-    class="text-4xl">
-    <span
-      class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
-      <lucide-icon [name]="item.icon" class="md:lg:mr-2 h-4 w-4"></lucide-icon>
-      <span class="capitalize">{{item.path}}</span>
-    </span>
-  </a>
-  }
-</nav> -->
-
-
 <nav class="grid items-start gap-2">
-
   <ng-container *ngFor="let item of sidebarItems; let i = index;">
-    <a [routerLink]="item.path" routerLinkActive="bg-accent" class="text-4xl">
-      <span class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
-        <lucide-icon [name]="item.icon" class="md:lg:mr-2 h-4 w-4"></lucide-icon>
+    <div class="text-4xl">
+      <span
+        class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent cursor-pointer">
+        <lucide-icon [name]="item.icon"
+          class="md:lg:mr-2 h-4 w-4"></lucide-icon>
+
         <span class="capitalize">{{item.title}}</span>
-        <lucide-icon 
-          [name]="item.isExpanded ?  this.getIconData('chevronDown') :  this.getIconData('chevronRight')"
-          class="ml-auto" 
-          *ngIf="item.children.length>0" 
-          (click)="toggleSubMenu(item)">
-        </lucide-icon>   
-      </span> 
-    </a>
+
+        <lucide-icon
+          [name]="item.icon ?  this.getIconData('chevronDown') :  this.getIconData('chevronRight')"
+          (click)="toggleSubMenu(item)"
+          class="ml-auto"
+          >
+        </lucide-icon>
+
+      </span>
+    </div>
+
     <ng-container *ngIf="item.children && item.isExpanded">
+      <a [routerLink]="item.path" 
+        class="text-4xl">
+        <span
+          class="group flex items-center rounded-md px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
+       
+          <span class="capitalize">Gestionar {{item.path}}</span>
+        </span>
+      </a>
       <ul>
         <li *ngFor="let child of item.children">
-          <a [routerLink]="child.path" routerLinkActive="bg-accent" class="text-4xl">
-            <span class="group flex items-center rounded-md px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
-              <lucide-icon [name]="child.icon" class="md:lg:mr-2 h-4 w-4"></lucide-icon>
+          <a [routerLink]="child.path" 
+            class="text-4xl"
+            >
+            <span
+              class="group flex items-center rounded-md px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
+           
               <span class="capitalize">{{child.title}}</span>
             </span>
           </a>
@@ -43,23 +43,3 @@
     </ng-container>
   </ng-container>
 </nav>
-
-
-
-
-<!-- sidebar.component.html -->
-<!-- <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-    <button mat-icon-button disabled></button>
-    <mat-icon>{{ node.icon }}</mat-icon>
-    <a [routerLink]="node.path" routerLinkActive="bg-accent">{{ node.name }}</a>
-  </mat-tree-node>
-
-  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-    <button mat-icon-button matTreeNodeToggle (click)="toggleSubMenu(node)"> -->
-      <!-- <mat-icon>{{ getIcon(node) }}</mat-icon> -->
-    <!-- </button>
-    <mat-icon>{{ node.icon }}</mat-icon>
-    <a [routerLink]="node.path" routerLinkActive="bg-accent">{{ node.name }}</a>
-  </mat-tree-node>
-</mat-tree> -->

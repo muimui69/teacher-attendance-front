@@ -1,3 +1,8 @@
 <div class="grid items-start gap-8">
-    <app-title heading="Modulos" text="Administra las diferentes modulos." ></app-title>
+    <app-title heading="Modulos" text="Administra las diferentes modulos." >
+      <button mat-flat-button color="accent" (click)="navigateCrearModulo()">Crear Modulo</button>
+    </app-title>
+    <div className="container overflow-x-auto">
+        <app-modulo-datatable/>
+     </div>
  </div>

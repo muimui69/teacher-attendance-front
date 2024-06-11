@@ -212,6 +212,13 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/material-moment-adapter@^18.0.2":
+  version "18.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-18.0.2.tgz#7cb2e4d0c4d396e5b134960a0401aabb91ea2c46"
+  integrity sha512-DXvj0fZLvb5VKzr3dlJgBBXbSljkQGzuCY0nufz1yhWzj1PhBg6OFiksvi9adNLAcZNsPIoJzq9/ofahRabhnA==
+  dependencies:
+    tslib "^2.3.0"
+
 "@angular/material@~17.3.10":
   version "17.3.10"
   resolved "https://registry.npmjs.org/@angular/material/-/material-17.3.10.tgz"
@@ -284,6 +291,13 @@
   version "17.3.9"
   resolved "https://registry.npmjs.org/@angular/router/-/router-17.3.9.tgz"
   integrity sha512-0cRF5YBJoDbXGQsRs3wEG+DPvN4PlhEqTa0DkTr9QIDJRg5P1uiDlOclV+w3OxEMsLrmXGmhjauHaWQk07M4LA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/service-worker@^17.3.0":
+  version "17.3.11"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-17.3.11.tgz#8922a2e39191903bf94e4d4039ab39e9edd01ef5"
+  integrity sha512-6RgBbbLTPME5ocE44OOtXG578RaBiFD1IK5RR7ByETEcHN65jZj354d6SCUK9+CpAc8RsA9hDGmhKNlH3XYo6w==
   dependencies:
     tslib "^2.3.0"
 

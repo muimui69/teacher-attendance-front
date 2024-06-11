@@ -26,6 +26,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 @NgModule({
   exports: [
@@ -56,6 +59,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatExpansionModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatTreeModule,
+    MatDividerModule
   ]
 })
 

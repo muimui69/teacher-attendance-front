@@ -1,0 +1,10 @@
+<div class="grid items-start gap-8">
+    <app-title heading="Periodos"
+        text="Administra los diferentes periodos academicos.">
+        <button mat-flat-button color="accent"
+            (click)="navigateCrearPeriodo()">Crear periodo</button>
+    </app-title>
+    <div className="container overflow-x-auto">
+        <app-periodo-datatable />
+    </div>
+</div>
