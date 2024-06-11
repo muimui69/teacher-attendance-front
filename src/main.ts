@@ -22,7 +22,7 @@ const extendedAppConfig = {
   ...appConfig,
   providers: [
     ...appConfig.providers,
-    { provide: LucideAngularModule, useValue: LucideAngularModule.pick(icons) }, 
+    { provide: LucideAngularModule, useValue: LucideAngularModule.pick(icons) },
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
