@@ -2,9 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule, MatTable } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
-import { CarreraDatableDataSource } from './carrera-datatable-datasource';
 import { CarreraService } from '@services/carrera.service';
-import { Datum } from '@interfaces/carrera.interface';
 import { MaterialModule } from '@shared/components/material/material.module';
 import { IconService } from '@shared/services/icon.service';
 import { LucideIconData } from 'lucide-angular/icons/types';
@@ -12,27 +10,30 @@ import { LucideAngularModule } from 'lucide-angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PeriodoDatableDataSource } from './periodo-datatable-datasource';
+import { PeriodoService } from '@services/periodo.service';
+import { Datum } from '@interfaces/periodo.interface';
 
 
 @Component({
-  selector: 'app-carrera-datatable',
-  templateUrl: './carrera-datatable.component.html',
-  styleUrl: './carrera-datatable.component.css',
+  selector: 'app-periodo-datatable',
+  templateUrl: './periodo-datatable.component.html',
+  styleUrl: './periodo-datatable.component.css',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, LucideAngularModule,MaterialModule]
 })
-export class CarreraDatatableComponent implements OnInit, AfterViewInit {
+export class PeriodoDatatableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Datum>;
-  dataSource = new CarreraDatableDataSource();
+  dataSource = new PeriodoDatableDataSource();
   dataSubscription!: Subscription;
 
-  displayedColumns = ['nombre', 'acciones'];
+  displayedColumns = ['nombre','gestion','fecha_inicio','fecha_fin', 'acciones'];
 
 
   constructor(
-    private carreraService: CarreraService,
+    private periodoService: PeriodoService,
     private iconService: IconService,
     private router: Router,
     private snackBar: MatSnackBar
@@ -46,7 +47,7 @@ export class CarreraDatatableComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.carreraService.getAll().subscribe(data => {
+    this.periodoService.getAll().subscribe(data => {
       this.dataSource.data = data.data;
       this.table.dataSource = this.dataSource;
     });
@@ -57,20 +58,20 @@ export class CarreraDatatableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  eliminarCarrera(carrera: Datum): void {
+  eliminarPeriodo(periodo: Datum): void {
     // const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta carrera?');
     // if (confirmacion) {
-    this.carreraService.delete(carrera.id).subscribe(
+    this.periodoService.delete(periodo.id).subscribe(
       () => {
-        this.snackBar.open('¡Carrera eliminada exitosamente!', 'Cerrar', {
+        this.snackBar.open('Periodo eliminada exitosamente!', 'Cerrar', {
           duration: 3000, 
           horizontalPosition: 'right', 
           verticalPosition: 'bottom', 
         });
       },
       (error) => {
-        console.error('Error al eliminar la carrera:', error);
-        this.snackBar.open('Error al crear la carrera', 'Cerrar', {
+        console.error('Error al eliminar el Periodo:', error);
+        this.snackBar.open('Error al crear el Periodo', 'Cerrar', {
           duration: 3000, 
           horizontalPosition: 'right',
           verticalPosition: 'bottom',
@@ -80,8 +81,8 @@ export class CarreraDatatableComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  navigateEditarCarrera(carrera: Datum) {
-    this.router.navigateByUrl(`dashboard/editar-carrera/${carrera.id}`);
+  navigateEditarPeriodo(periodo: Datum) {
+    this.router.navigateByUrl(`dashboard/editar-periodo/${periodo.id}`);
   }
 
 }

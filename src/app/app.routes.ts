@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
+import { CreateAulaFormComponent } from '@shared/components/aula/create-aula-form/create-aula-form.component';
+import { EditAulaFormComponent } from '@shared/components/aula/edit-aula-form/edit-aula-form.component';
 import { CreateCarreraFormComponent } from '@shared/components/carrera/create-carrera-form/create-carrera-form.component';
 import { EditCarreraFormComponent } from '@shared/components/carrera/edit-carrera-form/edit-carrera-form.component';
 import { CreateModalidadFormComponent } from '@shared/components/modalidad/create-modalidad-form/create-modalidad-form.component';
 import { EditModalidadFormComponent } from '@shared/components/modalidad/edit-modalidad-form/edit-modalidad-form.component';
 import { CreateModuloFormComponent } from '@shared/components/modulo/create-modulo-form/create-modulo-form.component';
 import { EditModuloFormComponent } from '@shared/components/modulo/edit-modulo-form/edit-modulo-form.component';
+import { CreatePeriodoFormComponent } from '@shared/components/periodo/create-periodo-form/create-periodo-form.component';
+import { EditPeriodoFormComponent } from '@shared/components/periodo/edit-periodo-form/edit-periodo-form.component';
 
 export const routes: Routes = [
     {
@@ -44,6 +48,26 @@ export const routes: Routes = [
         path: 'dashboard/editar-modalidad/:id',
         title: 'Editar modalidad',
         component: EditModalidadFormComponent,
+    },
+    {
+        path: 'dashboard/crear-periodo',
+        title: 'Crear periodo',
+        component: CreatePeriodoFormComponent,
+    },
+    {
+        path: 'dashboard/editar-periodo/:id',
+        title: 'Editar periodo',
+        component: EditPeriodoFormComponent,
+    },
+    {
+        path: 'dashboard/crear-aula',
+        title: 'Crear aula',
+        component: CreateAulaFormComponent,
+    },
+    {
+        path: 'dashboard/editar-aula/:id',
+        title: 'Editar aula',
+        component: EditAulaFormComponent,
     },
     {
         path: '',

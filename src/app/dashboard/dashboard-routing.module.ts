@@ -4,12 +4,11 @@ import DashboardComponent from './dashboard.component';
 import DocenteComponent from './pages/docente/docente.component';
 import AsignarMateriaDocenteComponent from './pages/docente/asignar-materia-docente/asignar-materia-docente.component';
 import MateriaComponent from './pages/materia/materia.component';
-import AsignarMateriaCarreraComponent from './pages/carrera/asignar-materia/asignar-materia-carrera.component';
 import CarreraComponent from './pages/carrera/carrera.component';
 import ModalidadComponent from './pages/modalidad/modalidad.component';
 import AulaComponent from './pages/aula/aula.component';
+import PeriodoComponent from './pages/periodo/periodo.component';
 import ModuloComponent from './pages/modulo/modulo.component';
-import AsignarAulaComponent from './pages/modulo/asignar-aula/asignar-aula.component';
 
 export const routes: Routes = [
     {
@@ -23,7 +22,7 @@ export const routes: Routes = [
             },
             {
                 path: 'docente',
-                title: 'Docentes',
+                title: 'Usuarios',
                 data: {
                     icon: 'user',
                 },
@@ -50,20 +49,10 @@ export const routes: Routes = [
             {
                 path: 'carrera',
                 title: 'Carreras',
+                component: CarreraComponent,
                 data: {
                     icon: 'subject',
                 },
-                children: [
-                    {
-                        path: '',
-                        component: CarreraComponent,
-                    },
-                    {
-                        path: 'asignar-materia-carrera',
-                        title: 'Asignar Materia',
-                        component: AsignarMateriaCarreraComponent,
-                    }
-                ]
             },
             {
                 path: 'modalidad',
@@ -71,6 +60,14 @@ export const routes: Routes = [
                 component: ModalidadComponent,
                 data: {
                     icon: 'graduation'
+                }
+            },
+            {
+                path: 'periodo',
+                title: 'Periodos',
+                component: PeriodoComponent,
+                data: {
+                    icon: 'calendar'
                 }
             },
             {
@@ -83,21 +80,11 @@ export const routes: Routes = [
             },
             {
                 path: 'modulo',
+                component: ModuloComponent,
                 title: 'Modulos',
                 data: {
                     icon: 'university'
-                },
-                children: [
-                    {
-                        path: '',
-                        component: ModuloComponent,
-                    },
-                    {
-                        path: 'asignar-aula',
-                        title: 'Asignar Aula',
-                        component: AsignarAulaComponent,
-                    }
-                ]
+                }
             }
         ]
     }

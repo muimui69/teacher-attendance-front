@@ -1,0 +1,82 @@
+<div class="min-h-screen">
+
+  <button
+    class="absolute left-4 top-4 md:left-8 md:top-8 flex items-center text-xs"
+    (click)="volverAtras()">
+    <lucide-icon
+      [name]=" this.getIconData('chevronLeft')"
+      class="w-6 h-6 mr-2">
+    </lucide-icon>
+    Atras
+  </button>
+
+  <div
+    class="container flex h-screen w-screen flex-col items-center justify-center">
+
+    <div
+      class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px] rounded-md border shadow-xl">
+      <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Crear periodo</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="nombre" formControlName="nombre">
+                  @if (addressForm.controls['nombre'].hasError('required')) {
+                  <mat-error>Nombre de la periodo es
+                    <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="gestion"
+                    formControlName="gestion">
+                  @if (addressForm.controls['gestion'].hasError('required')) {
+                  <mat-error>Gestion de la periodo es
+                    <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Ingrese el rango de fechas</mat-label>
+                  <mat-date-range-input [formGroup]="addressForm"
+                    [rangePicker]="picker">
+                    <input matStartDate formControlName="fecha_inicio"
+                      placeholder="Fecha de inicio">
+                    <input matEndDate formControlName="fecha_fin"
+                      placeholder="Fecha de fin">
+                  </mat-date-range-input>
+                  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix
+                    [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                  @if (addressForm.controls['fecha_inicio'].hasError('matStartDateInvalid')) {
+                  <mat-error>Invalid start date</mat-error>
+                  }
+                  @if (addressForm.controls['fecha_fin'].hasError('matEndDateInvalid')) {
+                  <mat-error>Invalid end date</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit">Guardar
+              periodo</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

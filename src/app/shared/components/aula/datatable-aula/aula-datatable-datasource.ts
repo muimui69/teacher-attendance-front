@@ -3,9 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Datum } from '@interfaces/carrera.interface';
+import { Datum } from '@interfaces/aula.interface';
 
-export class CarreraDatableDataSource extends DataSource<Datum> {
+export class AulaDatableDataSource extends DataSource<Datum> {
   data: Datum[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
@@ -62,6 +62,8 @@ export class CarreraDatableDataSource extends DataSource<Datum> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'nombre': return compare(a.id, b.nombre, isAsc);
+        case 'numero': return compare(a.id, b.modulo.numero, isAsc);
+        case 'ubicacion': return compare(a.id, b.modulo.ubicacion, isAsc);
         // case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
