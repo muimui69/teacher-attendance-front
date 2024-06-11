@@ -3,6 +3,8 @@ import { CreateAulaFormComponent } from '@shared/components/aula/create-aula-for
 import { EditAulaFormComponent } from '@shared/components/aula/edit-aula-form/edit-aula-form.component';
 import { CreateCarreraFormComponent } from '@shared/components/carrera/create-carrera-form/create-carrera-form.component';
 import { EditCarreraFormComponent } from '@shared/components/carrera/edit-carrera-form/edit-carrera-form.component';
+import { CreateMateriaFormComponent } from '@shared/components/materia/create-materia-form/create-materia-form.component';
+import { EditMateriaFormComponent } from '@shared/components/materia/edit-materia-form/edit-materia-form.component';
 import { CreateModalidadFormComponent } from '@shared/components/modalidad/create-modalidad-form/create-modalidad-form.component';
 import { EditModalidadFormComponent } from '@shared/components/modalidad/edit-modalidad-form/edit-modalidad-form.component';
 import { CreateModuloFormComponent } from '@shared/components/modulo/create-modulo-form/create-modulo-form.component';
@@ -68,6 +70,16 @@ export const routes: Routes = [
         path: 'dashboard/editar-aula/:id',
         title: 'Editar aula',
         component: EditAulaFormComponent,
+    },
+    {
+        path: 'dashboard/crear-materia',
+        title: 'Crear materia',
+        component: CreateMateriaFormComponent,
+    },
+    {
+        path: 'dashboard/editar-materia/:id',
+        title: 'Editar materia',
+        component: EditMateriaFormComponent,
     },
     {
         path: '',

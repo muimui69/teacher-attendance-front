@@ -7,7 +7,7 @@ import { PostAsistenciaParams } from '../interfaces/asistencia.interface';
   providedIn: 'root',
 })
 
-export class MateriaService {
+export class AsistenciaService {
 
   private endpoint = 'asistencia'; // Define el endpoint para la entidad Materia
 
