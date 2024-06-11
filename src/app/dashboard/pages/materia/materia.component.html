@@ -1,3 +1,9 @@
 <div class="grid items-start gap-8">
-    <app-title heading="Materias" text="Administra las diferentes materias." ></app-title>
+    <app-title heading="Materias" text="Administra las diferentes materias." >
+        <button mat-flat-button color="accent"
+        (click)="navigateCrearMateria()">Crear materia</button>
+    </app-title>
+    <div className="container overflow-x-auto">
+        <app-materia-datatable />
+    </div>
  </div>
