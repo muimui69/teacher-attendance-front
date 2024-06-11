@@ -6,20 +6,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { CarreraService } from '@services/carrera.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatIcon } from '@angular/material/icon';
 import { IconService } from '@shared/services/icon.service';
 import { LucideIconData } from 'lucide-angular/icons/types';
 import { LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
+import { ModalidadService } from '@services/modalidad.service';
 
 
 @Component({
-  selector: 'app-create-carrera-form',
-  templateUrl: './create-carrera-form.component.html',
-  styleUrl: './create-carrera-form.component.css',
+  selector: 'app-create-modalidad-form',
+  templateUrl: './create-modalidad-form.component.html',
+  styleUrl: './create-modalidad-form.component.css',
   standalone: true,
   imports: [
     MatInputModule,
@@ -32,7 +31,7 @@ import { CommonModule } from '@angular/common';
     LucideAngularModule
   ]
 })
-export class CreateCarreraFormComponent {
+export class CreateModalidadFormComponent {
   private fb = inject(FormBuilder);
 
   public getIconData(name: string): LucideIconData {
@@ -41,7 +40,7 @@ export class CreateCarreraFormComponent {
   }
 
   constructor(
-    private carreraService: CarreraService,
+    private modalidadService: ModalidadService,
     private iconService: IconService,
     private router: Router,
     private snackBar: MatSnackBar
@@ -50,20 +49,24 @@ export class CreateCarreraFormComponent {
   onSubmit(): void {
     if (this.addressForm.valid) {
       const nuevoNombre = this.addressForm.get('nombre')?.value;
-      this.carreraService.create({ nombre: nuevoNombre! }).subscribe(
+      const nuevoDescripcion = this.addressForm.get('descripcion')?.value;
+      this.modalidadService.create({
+        nombre: nuevoNombre!,
+        descripcion: nuevoDescripcion!
+      }).subscribe(
         (response) => {
-          console.log('Carrera creada:', response);
-          this.snackBar.open('¡Carrera creada exitosamente!', 'Cerrar', {
-            duration: 3000, 
-            horizontalPosition: 'right', 
-            verticalPosition: 'bottom', 
+          console.log('Modalidad creada:', response);
+          this.snackBar.open('Modalidad creada exitosamente!', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
           });
           this.volverAtras()
         },
         (error) => {
-          console.error('Error al crear la carrera:', error);
-          this.snackBar.open('Error al crear la carrera', 'Cerrar', {
-            duration: 3000, 
+          console.error('Error al crear la Modalidad:', error);
+          this.snackBar.open('Error al crear la Modalidad', 'Cerrar', {
+            duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'bottom',
           });
@@ -74,10 +77,11 @@ export class CreateCarreraFormComponent {
 
   addressForm = this.fb.group({
     nombre: [null, Validators.required],
+    descripcion: [null, Validators.required],
   });
 
   volverAtras() {
-    this.router.navigateByUrl('/dashboard/carrera');
+    this.router.navigateByUrl('/dashboard/modalidad');
   }
 
 }

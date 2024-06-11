@@ -15,16 +15,30 @@
       <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
         <mat-card class="rounded-md border shadow-xl">
           <mat-card-header>
-            <mat-card-title>Editar carrera</mat-card-title>
+            <mat-card-title>Editar modalidad</mat-card-title>
           </mat-card-header>
           <mat-card-content>
             <div class="row">
               <div class="col">
                 <mat-form-field class="full-width">
                   <input matInput placeholder="nombre" formControlName="nombre">
-                  <mat-error
-                    *ngIf="addressForm.controls['nombre'].hasError('required')">Nombre
-                    de la carrera es <strong>requerido</strong></mat-error>
+                  @if (addressForm.controls['nombre'].hasError('required')) {
+                  <mat-error>Nombre de la modalidad es
+                    <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="descripcion"
+                    formControlName="descripcion">
+                  @if (addressForm.controls['descripcion'].hasError('required'))
+                  {
+                  <mat-error>Descripcion de la modalidad es
+                    <strong>requerido</strong></mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
