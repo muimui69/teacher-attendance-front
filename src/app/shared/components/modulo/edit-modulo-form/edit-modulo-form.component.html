@@ -21,10 +21,23 @@
             <div class="row">
               <div class="col">
                 <mat-form-field class="full-width">
-                  <input matInput placeholder="nombre" formControlName="nombre">
-                  <mat-error
-                    *ngIf="addressForm.controls['nombre'].hasError('required')">Nombre
-                    de la carrera es <strong>requerido</strong></mat-error>
+                  <input matInput placeholder="numero" formControlName="numero">
+                  @if (addressForm.controls['numero'].hasError('required')) {
+                  <mat-error>Numero del modulo es
+                    <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="ubicacion"
+                    formControlName="ubicacion">
+                  @if (addressForm.controls['ubicacion'].hasError('required')) {
+                  <mat-error>Ubicacion de la carrera es
+                    <strong>requerida</strong></mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>

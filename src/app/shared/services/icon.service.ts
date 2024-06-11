@@ -11,7 +11,8 @@ import {
   ChevronRight,
   CirclePlus,
   Trash2,
-  Pencil
+  Pencil,
+  ChevronLeft
 } from 'lucide-angular';
 import { LucideIcons } from 'lucide-angular/icons/types';
 
@@ -32,7 +33,8 @@ export class IconService {
     chevronRight:ChevronRight,
     circlePlus:CirclePlus,
     delete:Trash2,
-    edit:Pencil
+    edit:Pencil,
+    chevronLeft: ChevronLeft,
   };
 
   constructor() { }

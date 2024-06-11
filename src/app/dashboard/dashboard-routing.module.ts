@@ -10,7 +10,6 @@ import ModalidadComponent from './pages/modalidad/modalidad.component';
 import AulaComponent from './pages/aula/aula.component';
 import ModuloComponent from './pages/modulo/modulo.component';
 import AsignarAulaComponent from './pages/modulo/asignar-aula/asignar-aula.component';
-import { CreateDocenteComponent } from '@shared/components/docente/create-docente/create-docente.component';
 
 export const routes: Routes = [
     {

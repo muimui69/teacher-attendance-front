@@ -13,11 +13,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LucideAngularModule } from 'lucide-angular';
 import { IconService } from '@shared/services/icon.service';
 import { LucideIconData } from 'lucide-angular/icons/types';
+import { ModuloService } from '@services/modulo.service';
 
 @Component({
   selector: 'app-edit-carrera-form',
-  templateUrl: './edit-carrera-form.component.html',
-  styleUrl: './edit-carrera-form.component.css',
+  templateUrl: './edit-modulo-form.component.html',
+  styleUrl: './edit-modulo-form.component.css',
   standalone: true,
   imports: [
     MatInputModule,
@@ -31,9 +32,10 @@ import { LucideIconData } from 'lucide-angular/icons/types';
     LucideAngularModule
   ]
 })
-export class EditCarreraFormComponent implements OnInit {
+
+export class EditModuloFormComponent implements OnInit {
   private fb = inject(FormBuilder);
-  carreraId: string | null = null;
+  moduloId: string | null = null;
 
   public getIconData(name: string): LucideIconData {
     const icon = this.iconService.getIcon(name);
@@ -41,7 +43,7 @@ export class EditCarreraFormComponent implements OnInit {
   }
 
   constructor(
-    private carreraService: CarreraService,
+    private moduloService: ModuloService,
     private iconService: IconService,
     private router: Router,
     private route: ActivatedRoute,
@@ -49,22 +51,27 @@ export class EditCarreraFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.carreraId = this.route.snapshot.paramMap.get('id');
-    this.carreraService.getById(+(this.carreraId!)).subscribe((carrera) => {
-      console.log(carrera)
+    this.moduloId = this.route.snapshot.paramMap.get('id');
+    this.moduloService.getById(+(this.moduloId!)).subscribe((modulo) => {
+      console.log(modulo)
       this.addressForm = this.fb.group({
-        nombre: [carrera.data?.nombre as never, Validators.required],
+        numero: [modulo.data?.numero as never, Validators.required],
+        ubicacion: [modulo.data?.ubicacion as never, Validators.required],
       });
     });
   }
 
   onSubmit(): void {
     if (this.addressForm.valid) {
-      const nuevoNombre = this.addressForm.get('nombre')?.value;
-      if (this.carreraId) {
-        this.carreraService.update(+(this.carreraId), { nombre: nuevoNombre! }).subscribe(
+      const nuevoNumero = this.addressForm.get('numero')?.value;
+      const nuevoUbicacion = this.addressForm.get('ubicacion')?.value;
+      if (this.moduloId) {
+        this.moduloService.update(+(this.moduloId), { 
+          numero: nuevoNumero!, 
+          ubicacion:nuevoUbicacion!
+        }).subscribe(
           (response) => {
-            console.log('Carrera actualizada:', response);
+            console.log('Modulo actualizada:', response);
             this.snackBar.open('¡Cambios guardados exitosamente!', 'Cerrar', {
               duration: 3000, 
               horizontalPosition: 'right', 
@@ -73,8 +80,8 @@ export class EditCarreraFormComponent implements OnInit {
             this.volverAtras()
           },
           (error) => {
-            console.error('Error al actualizar la carrera:', error);
-            this.snackBar.open('Error al actualizar la carrera', 'Cerrar', {
+            console.error('Error al actualizar el modulo:', error);
+            this.snackBar.open('Error al actualizar el modulo', 'Cerrar', {
               duration: 3000, 
               horizontalPosition: 'right',
               verticalPosition: 'bottom',
@@ -86,10 +93,11 @@ export class EditCarreraFormComponent implements OnInit {
   }
 
   addressForm = this.fb.group({
-    nombre: [null, Validators.required],
+    numero: [null, Validators.required],
+    ubicacion: [null, Validators.required],
   });
 
   volverAtras() {
-    this.router.navigateByUrl('/dashboard/carrera');
+    this.router.navigateByUrl('/dashboard/modulo');
   }
 }
