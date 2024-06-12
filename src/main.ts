@@ -13,7 +13,8 @@ import { LucideAngularModule } from 'lucide-angular';
 import { IconService } from './app/shared/services/icon.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideServiceWorker } from '@angular/service-worker';
-import { isDevMode } from '@angular/core';
+import { enableProdMode, isDevMode } from '@angular/core';
+import { environment } from '@environments/environment';
 
 const iconService = new IconService();
 const icons = iconService.getIcons();
@@ -22,7 +23,7 @@ const extendedAppConfig = {
   ...appConfig,
   providers: [
     ...appConfig.providers,
-    { provide: LucideAngularModule, useValue: LucideAngularModule.pick(icons) }, 
+    { provide: LucideAngularModule, useValue: LucideAngularModule.pick(icons) },
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -33,3 +34,4 @@ const extendedAppConfig = {
 
 bootstrapApplication(AppComponent, extendedAppConfig)
   .catch((err) => console.error(err));
+
