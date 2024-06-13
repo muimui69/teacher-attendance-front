@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginService } from '@services/login/login.service';
@@ -6,7 +7,7 @@ import { SidemenuComponent } from '@shared/components/sidemenu/sidemenu.componen
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule, SidemenuComponent],
+  imports: [RouterModule, SidemenuComponent,CommonModule],
   templateUrl: './dashboard.component.html',
 })
 

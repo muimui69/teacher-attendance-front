@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@environments/environment';
+import { LoginService } from '@services/login/login.service';
 
 @Injectable({
     providedIn: 'root'
@@ -10,12 +11,17 @@ import { environment } from '@environments/environment';
 export class ApiService {
     private baseUrl = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private loginService: LoginService
+    ) { }
 
     private getHeaders(): HttpHeaders {
+        const token = this.loginService.userToken;
         return new HttpHeaders({
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         });
     }
 
@@ -25,19 +31,19 @@ export class ApiService {
         });
     }
 
-    post<T,B>(endpoint: string, body: B): Observable<T> {
+    post<T, B>(endpoint: string, body: B): Observable<T> {
         return this.http.post<T>(`${this.baseUrl}/${endpoint}`, body, {
             headers: this.getHeaders()
         });
     }
 
-    put<T,B>(endpoint: string, body: B): Observable<T> {
+    put<T, B>(endpoint: string, body: B): Observable<T> {
         return this.http.put<T>(`${this.baseUrl}/${endpoint}`, body, {
             headers: this.getHeaders()
         });
     }
 
-    patch<T,B>(endpoint: string, body: B): Observable<T> {
+    patch<T, B>(endpoint: string, body: B): Observable<T> {
         return this.http.patch<T>(`${this.baseUrl}/${endpoint}`, body, {
             headers: this.getHeaders()
         });

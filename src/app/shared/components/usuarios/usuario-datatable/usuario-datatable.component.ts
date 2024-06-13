@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuarioService } from '@services/usuario.service';
 import { UsuarioDatableDataSource } from './usuario-datatable-datasource';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { UsuarioDatableDataSource } from './usuario-datatable-datasource';
   templateUrl: './usuario-datatable.component.html',
   styleUrl: './usuario-datatable.component.css',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
+  imports: [CommonModule,MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
 })
 export class UsuarioDatatableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,7 +71,7 @@ export class UsuarioDatatableComponent implements OnInit, AfterViewInit {
       },
       (error) => {
         console.error('Error al eliminar al usuario:', error);
-        this.snackBar.open('Error al crear al usuario', 'Cerrar', {
+        this.snackBar.open('Error al eliminar al usuario', 'Cerrar', {
           duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'bottom',
