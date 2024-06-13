@@ -93,19 +93,23 @@ export class EditDetalleCargaHorariaFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.addressForm.valid) {
-      const nuevoDocente = this.addressForm.get('id_docente')?.value;
-      const nuevaMateria = this.addressForm.get('id_materia')?.value;
-      const nuevaModalida = this.addressForm.get('id_modalidad')?.value;
-      const nuevoPeriodo = this.addressForm.get('id_periodo')?.value;
+      const nuevoHoraInicio = this.addressForm.get('hora_inicio')?.value;
+      const nuevaHoraFin = this.addressForm.get('hora_fin')?.value;
+      const nuevaAula = this.addressForm.get('aulaId')?.value;
+      const nuevoCargaHoraria = this.addressForm.get('cargaHorariaId')?.value;
+      const nuevoDia = this.addressForm.get('diaId')?.value;
+      const nuevoGrupo = this.addressForm.get('grupoId')?.value;
       if (this.detallecargaId) {
-        this.cargahorariaService.update(+(this.detallecargaId),{
-          id_docente: nuevoDocente!,
-          id_materia: nuevaMateria!,
-          id_modalidad: nuevaModalida!,
-          id_periodo: nuevoPeriodo!
+        this.detalleCargaHorariaService.update((+(this.detallecargaId)),{
+          hora_inicio: nuevoHoraInicio!,
+          hora_fin: nuevaHoraFin!,
+          aulaId: nuevaAula!,
+          cargaHorariaId: nuevoCargaHoraria!,
+          diaId: nuevoDia!,
+          grupoId: nuevoGrupo!,
         }).subscribe(
           (response) => {
-            console.log('Carga horaria actualizada:', response);
+            console.log('Detalle horaria actualizada:', response);
             this.snackBar.open('¡Cambios guardados exitosamente!', 'Cerrar', {
               duration: 3000,
               horizontalPosition: 'right',
@@ -114,8 +118,8 @@ export class EditDetalleCargaHorariaFormComponent implements OnInit {
             this.volverAtras()
           },
           (error) => {
-            console.error('Error al actualizar la Carga horaria:', error);
-            this.snackBar.open('Error al actualizar la Carga horaria', 'Cerrar', {
+            console.error('Error al actualizar el Detalle Carga horaria:', error);
+            this.snackBar.open('Error al actualizar el Detalle Carga horaria', 'Cerrar', {
               duration: 3000,
               horizontalPosition: 'right',
               verticalPosition: 'bottom',

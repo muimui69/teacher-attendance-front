@@ -41,6 +41,7 @@ import { DetalleCargaHorariaService } from '@services/detallecargahoraria.servic
     MaterialModule
   ]
 })
+
 export class CreateDetalleCargaHorariaFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   cargahorarias: Datum[] = [];
@@ -107,7 +108,7 @@ export class CreateDetalleCargaHorariaFormComponent implements OnInit {
         },
         (error) => {
           console.error('Error al crear el detalle de la carga horaria:', error);
-          this.snackBar.open('Error al crear el detalle de la carga horaria', 'Cerrar', {
+          this.snackBar.open('Error al crear el detalle de la carga horaria: ' + error.error.message, 'Cerrar', {
             duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'bottom',

@@ -11,8 +11,7 @@
         <lucide-icon
           [name]="item.icon ?  this.getIconData('chevronDown') :  this.getIconData('chevronRight')"
           (click)="toggleSubMenu(item)"
-          class="ml-auto"
-          >
+          class="ml-auto">
         </lucide-icon>
 
       </span>
@@ -30,8 +29,7 @@
       <ul>
         <li *ngFor="let child of item.children">
           <a [routerLink]="child.path"
-            class="text-4xl"
-            >
+            class="text-4xl">
             <span
               class="group flex items-center rounded-md px-6 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent">
 
@@ -42,7 +40,16 @@
       </ul>
     </ng-container>
   </ng-container>
-  <li *ngIf="userLoginOn" class="nav-item">
-    <a class="nav-link" (click)="logout()"  routerLink="/inicio">Cerrar Sesión</a>
-  </li>
+
+  <div class="text-4xl" *ngIf="userLoginOn">
+    <a
+      (click)="logout()" routerLink="/inicio"
+      class="group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground bg-transparent cursor-pointer">
+      <lucide-icon [name]="this.getIconData('logOut')"
+        class="md:lg:mr-2 h-4 w-4"></lucide-icon>
+
+      <span class="capitalize">  Cerrar Sesión</span>
+    </a>
+  </div>
+  
 </nav>

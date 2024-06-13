@@ -11,6 +11,7 @@ import PeriodoComponent from './pages/periodo/periodo.component';
 import ModuloComponent from './pages/modulo/modulo.component';
 import licenciaDocenteComponent from './pages/docente/licencia-docente/licencia-docente.component';
 import AsignarHorarioDocenteComponent from './pages/docente/asignar-horario-docente/asignar-horario-docente.component';
+import GrupoComponent from './pages/grupo/grupo.component';
 
 export const routes: Routes = [
     {
@@ -96,6 +97,14 @@ export const routes: Routes = [
                 title: 'Modulos',
                 data: {
                     icon: 'university'
+                }
+            },
+            {
+                path: 'grupo',
+                component: GrupoComponent,
+                title: 'Grupos',
+                data: {
+                    icon: 'group'
                 }
             }
         ]

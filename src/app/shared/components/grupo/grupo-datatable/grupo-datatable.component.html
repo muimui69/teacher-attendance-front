@@ -1,0 +1,39 @@
+<div class="rounded-md border shadow-xl">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let row">{{row.nombre}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">
+        <div class="flex justify-end px-10 space-x-2">
+            <button mat-mini-fab color="primary" (click)="navigateEditarGrupo(row)">
+              <lucide-icon
+                [name]=" this.getIconData('edit')"
+                class="w-4 h-4">
+              </lucide-icon>
+            </button>
+          <button mat-mini-fab color="accent" (click)="eliminarGrupo(row)">
+            <lucide-icon
+              [name]=" this.getIconData('delete') "
+              class="w-4 h-4">
+            </lucide-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+    [length]="dataSource.data.length"
+    [pageIndex]="0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    aria-label="Select page">
+  </mat-paginator>
+</div>

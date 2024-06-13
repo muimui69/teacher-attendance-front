@@ -19,120 +19,132 @@ import { CreateCargaHorariaFormComponent } from '@shared/components/carga-horari
 import { EditCargaHorariaFormComponent } from '@shared/components/carga-horaria/edit-carga-horaria-form/edit-carga-horaria-form.component';
 import { EditDetalleCargaHorariaFormComponent } from '@shared/components/detalle-carga-horaria/edit-detalle-carga-horaria-form/edit-detalle-carga-form.component';
 import { CreateDetalleCargaHorariaFormComponent } from '@shared/components/detalle-carga-horaria/create-detalle-carga-horaria-form/create-detalle-carga-form.component';
+import { CreateGrupoFormComponent } from '@shared/components/grupo/create-carrera-form/create-grupo-form.component';
+import { EditGrupoFormComponent } from '@shared/components/grupo/edit-grupo-form/edit-grupo-form.component';
 
 
 export const routes: Routes = [
-    {
-        path: 'home',
-        loadComponent: () => import('./auth/login/login.component'),
-    },
-    {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard-routing.module')
-    },
-    {
-        path: 'dashboard/crear-carrera',
-        title: 'Crear carrera',
-        component: CreateCarreraFormComponent,
-    },
-    {
-        path: 'dashboard/editar-carrera/:id',
-        title: 'Editar carrera',
-        component: EditCarreraFormComponent,
-    },
-    {
-        path: 'dashboard/crear-modulo',
-        title: 'Crear modulo',
-        component: CreateModuloFormComponent,
-    },
-    {
-        path: 'dashboard/editar-modulo/:id',
-        title: 'Editar carrera',
-        component: EditModuloFormComponent,
-    },
-    {
-        path: 'dashboard/crear-modalidad',
-        title: 'Crear modalidad',
-        component: CreateModalidadFormComponent,
-    },
-    {
-        path: 'dashboard/editar-modalidad/:id',
-        title: 'Editar modalidad',
-        component: EditModalidadFormComponent,
-    },
-    {
-        path: 'dashboard/crear-periodo',
-        title: 'Crear periodo',
-        component: CreatePeriodoFormComponent,
-    },
-    {
-        path: 'dashboard/editar-periodo/:id',
-        title: 'Editar periodo',
-        component: EditPeriodoFormComponent,
-    },
-    {
-        path: 'dashboard/crear-aula',
-        title: 'Crear aula',
-        component: CreateAulaFormComponent,
-    },
-    {
-        path: 'dashboard/editar-aula/:id',
-        title: 'Editar aula',
-        component: EditAulaFormComponent,
-    },
-    {
-        path: 'dashboard/crear-materia',
-        title: 'Crear materia',
-        component: CreateMateriaFormComponent,
-    },
-    {
-        path: 'dashboard/editar-materia/:id',
-        title: 'Editar materia',
-        component: EditMateriaFormComponent,
-    },
-    {
-      path: 'dashboard/crear-usuario',
-      title: 'Crea usuario',
-      component: CreateUsuarioFormComponent,
-    },
-    {
-      path: 'dashboard/editar-usuario/:id',
-      title: 'Editar usuario',
-      component: EditUsuarioComponent,
-    },
-    {
-      path: 'dashboard/docente/crear-licencia',
-      title: 'Crea licencia',
-      component: CreateLicenciaFormComponent,
-    },
-    {
-      path: 'dashboard/docente/editar-licencia/:id',
-      title: 'Editar licencia',
-      component: EditLicenciaFormComponent,
-    },
-    {
-      path: 'dashboard/crear-carga-horaria',
-      title: 'Crea carga horaria',
-      component: CreateCargaHorariaFormComponent,
-    },
-    {
-      path: 'dashboard/editar-carga-horaria/:id',
-      title: 'Editar carga horaria',
-      component: EditCargaHorariaFormComponent,
-    },
-    {
-      path: 'dashboard/crear-detalle-carga',
-      title: 'Crea carga horaria',
-      component: CreateDetalleCargaHorariaFormComponent,
-    },
-    {
-      path: 'dashboard/editar-detalle-carga/:id',
-      title: 'Editar carga horaria',
-      component: EditDetalleCargaHorariaFormComponent,
-    },
-    {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    },
+  {
+    path: 'home',
+    loadComponent: () => import('./auth/login/login.component'),
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard-routing.module')
+  },
+  {
+    path: 'dashboard/crear-carrera',
+    title: 'Crear carrera',
+    component: CreateCarreraFormComponent,
+  },
+  {
+    path: 'dashboard/editar-carrera/:id',
+    title: 'Editar carrera',
+    component: EditCarreraFormComponent,
+  },
+  {
+    path: 'dashboard/crear-modulo',
+    title: 'Crear modulo',
+    component: CreateModuloFormComponent,
+  },
+  {
+    path: 'dashboard/editar-modulo/:id',
+    title: 'Editar carrera',
+    component: EditModuloFormComponent,
+  },
+  {
+    path: 'dashboard/crear-modalidad',
+    title: 'Crear modalidad',
+    component: CreateModalidadFormComponent,
+  },
+  {
+    path: 'dashboard/editar-modalidad/:id',
+    title: 'Editar modalidad',
+    component: EditModalidadFormComponent,
+  },
+  {
+    path: 'dashboard/crear-periodo',
+    title: 'Crear periodo',
+    component: CreatePeriodoFormComponent,
+  },
+  {
+    path: 'dashboard/editar-periodo/:id',
+    title: 'Editar periodo',
+    component: EditPeriodoFormComponent,
+  },
+  {
+    path: 'dashboard/crear-aula',
+    title: 'Crear aula',
+    component: CreateAulaFormComponent,
+  },
+  {
+    path: 'dashboard/editar-aula/:id',
+    title: 'Editar aula',
+    component: EditAulaFormComponent,
+  },
+  {
+    path: 'dashboard/crear-materia',
+    title: 'Crear materia',
+    component: CreateMateriaFormComponent,
+  },
+  {
+    path: 'dashboard/editar-materia/:id',
+    title: 'Editar materia',
+    component: EditMateriaFormComponent,
+  },
+  {
+    path: 'dashboard/crear-usuario',
+    title: 'Crea usuario',
+    component: CreateUsuarioFormComponent,
+  },
+  {
+    path: 'dashboard/editar-usuario/:id',
+    title: 'Editar usuario',
+    component: EditUsuarioComponent,
+  },
+  {
+    path: 'dashboard/docente/crear-licencia',
+    title: 'Crea licencia',
+    component: CreateLicenciaFormComponent,
+  },
+  {
+    path: 'dashboard/docente/editar-licencia/:id',
+    title: 'Editar licencia',
+    component: EditLicenciaFormComponent,
+  },
+  {
+    path: 'dashboard/crear-carga-horaria',
+    title: 'Crea carga horaria',
+    component: CreateCargaHorariaFormComponent,
+  },
+  {
+    path: 'dashboard/editar-carga-horaria/:id',
+    title: 'Editar carga horaria',
+    component: EditCargaHorariaFormComponent,
+  },
+  {
+    path: 'dashboard/crear-detalle-carga',
+    title: 'Crea carga horaria',
+    component: CreateDetalleCargaHorariaFormComponent,
+  },
+  {
+    path: 'dashboard/editar-detalle-carga/:id',
+    title: 'Editar carga horaria',
+    component: EditDetalleCargaHorariaFormComponent,
+  },
+  {
+    path: 'dashboard/crear-grupo',
+    title: 'Crea grupo',
+    component: CreateGrupoFormComponent,
+  },
+  {
+    path: 'dashboard/editar-grupo/:id',
+    title: 'Editar grupo',
+    component: EditGrupoFormComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 ];

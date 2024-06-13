@@ -9,31 +9,30 @@ import { LucideAngularModule } from 'lucide-angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuarioService } from '@services/usuario.service';
-import { UsuarioDatableDataSource } from './usuario-datatable-datasource';
-import { CommonModule } from '@angular/common';
-import { DatumU } from '@interfaces/usuario.interface';
+import { DatumG } from '@interfaces/grupo.interface';
+import { GrupoDatableDataSource } from './grupo-datatable-datasource';
+import { GrupoService } from '@services/grupo.service';
 
 
 @Component({
-  selector: 'app-usuario-datatable',
-  templateUrl: './usuario-datatable.component.html',
-  styleUrl: './usuario-datatable.component.css',
+  selector: 'app-grupo-datatable',
+  templateUrl: './grupo-datatable.component.html',
+  styleUrl: './grupo-datatable.component.css',
   standalone: true,
-  imports: [CommonModule,MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
 })
-export class UsuarioDatatableComponent implements OnInit, AfterViewInit {
+
+export class GrupoDatatableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<DatumU>;
-  dataSource = new UsuarioDatableDataSource();
+  @ViewChild(MatTable) table!: MatTable<DatumG>;
+  dataSource = new GrupoDatableDataSource();
   dataSubscription!: Subscription;
 
-  displayedColumns = ['nombre', 'apellido', 'email', 'acciones'];
-
+  displayedColumns = ['nombre', 'acciones'];
 
   constructor(
-    private usuarioService: UsuarioService,
+    private grupoService: GrupoService,
     private iconService: IconService,
     private router: Router,
     private snackBar: MatSnackBar
@@ -47,7 +46,7 @@ export class UsuarioDatatableComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.usuarioService.getAll().subscribe(data => {
+    this.grupoService.getAll().subscribe(data => {
       this.dataSource.data = data.data;
       this.table.dataSource = this.dataSource;
     });
@@ -58,21 +57,21 @@ export class UsuarioDatatableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  eliminarUsuario(usuario: DatumU): void {
+  eliminarGrupo(grupo: DatumG): void {
     // const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta carrera?');
     // if (confirmacion) {
-    this.usuarioService.delete(usuario.id).subscribe(
+    this.grupoService.delete(grupo.id).subscribe(
       () => {
-        this.snackBar.open('Usuario eliminado exitosamente!', 'Cerrar', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'bottom',
+        this.snackBar.open('Grupo eliminado exitosamente!', 'Cerrar', {
+          duration: 3000, 
+          horizontalPosition: 'right', 
+          verticalPosition: 'bottom', 
         });
       },
       (error) => {
-        console.error('Error al eliminar al usuario:', error);
-        this.snackBar.open('Error al eliminar al usuario', 'Cerrar', {
-          duration: 3000,
+        console.error('Error al eliminar la Grupo:', error);
+        this.snackBar.open('Error al crear la Grupo', 'Cerrar', {
+          duration: 3000, 
           horizontalPosition: 'right',
           verticalPosition: 'bottom',
         });
@@ -81,8 +80,8 @@ export class UsuarioDatatableComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  navigateEditarUsuario(carrera: DatumU) {
-    this.router.navigateByUrl(`dashboard/editar-usuario/${carrera.id}`);
+  navigateEditarGrupo(grupo: DatumG) {
+    this.router.navigateByUrl(`dashboard/editar-grupo/${grupo.id}`);
   }
 
 }
