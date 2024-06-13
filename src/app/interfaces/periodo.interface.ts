@@ -9,10 +9,10 @@ export interface PostPeriodoParams {
 export interface GetPeriodoResponse {
     statusCode: number;
     message:    string;
-    data:       Datum[];
+    data:       DatumP[];
 }
 
-export interface Datum {
+export interface DatumP {
     id:           number;
     fecha_inicio: Date;
     fecha_fin:    Date;

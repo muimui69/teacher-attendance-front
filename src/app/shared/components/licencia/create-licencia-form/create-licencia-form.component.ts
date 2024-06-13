@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { CarreraService } from '@services/carrera.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIcon } from '@angular/material/icon';
@@ -14,12 +13,14 @@ import { IconService } from '@shared/services/icon.service';
 import { LucideIconData } from 'lucide-angular/icons/types';
 import { LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
+import { LicenciaService } from '@services/licencia.service';
+import { MaterialModule } from '@shared/components/material/material.module';
 
 
 @Component({
-  selector: 'app-create-carrera-form',
-  templateUrl: './create-carrera-form.component.html',
-  styleUrl: './create-carrera-form.component.css',
+  selector: 'app-create-licencia-form',
+  templateUrl: './create-licencia-form.component.html',
+  styleUrl: './create-licencia-form.component.css',
   standalone: true,
   imports: [
     MatInputModule,
@@ -28,11 +29,12 @@ import { CommonModule } from '@angular/common';
     MatRadioModule,
     MatCardModule,
     ReactiveFormsModule,
+    MaterialModule,
     CommonModule,
     LucideAngularModule
   ]
 })
-export class CreateCarreraFormComponent {
+export class CreateLicenciaFormComponent {
   private fb = inject(FormBuilder);
 
   public getIconData(name: string): LucideIconData {
@@ -41,7 +43,7 @@ export class CreateCarreraFormComponent {
   }
 
   constructor(
-    private carreraService: CarreraService,
+    private licenciaService: LicenciaService,
     private iconService: IconService,
     private router: Router,
     private snackBar: MatSnackBar
@@ -49,21 +51,25 @@ export class CreateCarreraFormComponent {
 
   onSubmit(): void {
     if (this.addressForm.valid) {
-      const nuevoNombre = this.addressForm.get('nombre')?.value;
-      this.carreraService.create({ nombre: nuevoNombre! }).subscribe(
+      const nuevoTitulo = this.addressForm.get('titulo')?.value;
+      const nuevoDescripcion = this.addressForm.get('descripcion')?.value;
+      const nuevoFecha = this.addressForm.get('fecha')?.value;
+      this.licenciaService.create({ titulo: nuevoTitulo!,
+        descripcion: nuevoDescripcion!,
+        fecha: nuevoFecha!}).subscribe(
         (response) => {
-          console.log('Carrera creada:', response);
-          this.snackBar.open('¡Carrera creada exitosamente!', 'Cerrar', {
-            duration: 3000, 
-            horizontalPosition: 'right', 
-            verticalPosition: 'bottom', 
+          console.log('Licencia registrada:', response);
+          this.snackBar.open('Licencia registrada exitosamente!', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
           });
           this.volverAtras()
         },
         (error) => {
-          console.error('Error al crear la carrera:', error);
-          this.snackBar.open('Error al crear la carrera', 'Cerrar', {
-            duration: 3000, 
+          console.error('Error al registrar la licencia:', error);
+          this.snackBar.open('Error al registrar la licencia', 'Cerrar', {
+            duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'bottom',
           });
@@ -73,11 +79,13 @@ export class CreateCarreraFormComponent {
   }
 
   addressForm = this.fb.group({
-    nombre: [null, Validators.required],
+    titulo: [null, Validators.required],
+    descripcion: [null, Validators.required],
+    fecha: [null, Validators.required],
   });
 
   volverAtras() {
-    this.router.navigateByUrl('/dashboard/carrera');
+    this.router.navigateByUrl('/dashboard/docente/licencia-docente');
   }
 
 }

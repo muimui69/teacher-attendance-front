@@ -18,9 +18,10 @@ export class LoginService {
   }
 
   login(credentials:LoginRequest):Observable<any>{
-    return this.http.post<any>(environment.apiUrl+"/login",credentials).pipe(
+    return this.http.post<any>(environment.apiUrl+"/auth/login",credentials).pipe(
       tap( (userData) => {
         sessionStorage.setItem("token", userData.token);
+        console.log('Token almacenado en sessionStorage:', userData.token);
         this.currentUserData.next(userData.token);
         this.currentUserLoginOn.next(true);
       }),

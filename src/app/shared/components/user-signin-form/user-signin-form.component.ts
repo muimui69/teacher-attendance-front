@@ -16,6 +16,7 @@ import { LoginRequest } from '../../../interfaces/loginRequest.interface';
     MaterialModule
   ],
   templateUrl: './user-signin-form.component.html',
+  styleUrl: './user-signin-form.component.css',
 })
 
 export class UserSigninFormComponent implements OnInit {
@@ -37,31 +38,6 @@ export class UserSigninFormComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  // onSubmit(): void {
-  //   if (this.signinForm.invalid) {
-  //     return;
-  //   }
-  //   this.isLoading = true;
-  //   console.log(this.signinForm.valueChanges)
-  //   // this.authService.signup(this.signinForm.value).subscribe(
-  //   //   response => {
-  //   //     this.isLoading = false;
-  //   //     this.router.navigate(['/login']);
-  //   //     this.snackBar.open(`Bienvenido a PointSync ${response.data.user.name}!`, 'Close', {
-  //   //       duration: 3000
-  //   //     });
-  //   //   },
-  //   //   error => {
-  //   //     this.isLoading = false;
-  //   //     console.error(error);
-  //   //     this.snackBar.open('Ha ocurrido un error. Verifique que llenó todos los campos correctamente.', 'Close', {
-  //   //       duration: 3000,
-  //   //       panelClass: ['snack-bar-error']
-  //   //     });
-  //   //   }
-  //   // );
-  // }
 
   get email(){
     return this.signinForm.controls.username;

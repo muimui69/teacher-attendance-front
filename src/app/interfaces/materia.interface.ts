@@ -7,10 +7,10 @@ export interface PostMateriaParams {
 export interface GetMateriaResponse {
     statusCode: number;
     message:    string;
-    data:       Datum[];
+    data:       DatumM[];
 }
 
-export interface Datum {
+export interface DatumM {
     id:      number;
     nombre:  string;
     sigla:   string;

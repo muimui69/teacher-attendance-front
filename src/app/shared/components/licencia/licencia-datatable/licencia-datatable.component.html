@@ -1,0 +1,50 @@
+<div class="rounded-md border shadow-xl">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</th>
+      <td mat-cell *matCellDef="let row">{{row.titulo}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+      <td mat-cell *matCellDef="let row">{{row.fecha}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre_c">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
+      <td mat-cell *matCellDef="let row">{{row.docente.nombre}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">
+        <div class="flex justify-end px-10 space-x-2">
+            <button mat-mini-fab color="primary" (click)="navigateEditarLicencia(row)">
+              <lucide-icon
+                [name]="this.getIconData('edit')"
+                class="w-4 h-4">
+              </lucide-icon>
+            </button>
+          <button mat-mini-fab color="accent" (click)="eliminarLicencia(row)">
+            <lucide-icon
+              [name]="this.getIconData('delete')"
+              class="w-4 h-4">
+            </lucide-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+    [length]="dataSource.data.length"
+    [pageIndex]="0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    aria-label="Select page">
+  </mat-paginator>
+</div>

@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalidadService } from '@services/modalidad.service';
-import { Datum } from '@interfaces/modalidad.interface';
+import { DatumMo } from '@interfaces/modalidad.interface';
 
 
 @Component({
@@ -26,7 +26,7 @@ import { Datum } from '@interfaces/modalidad.interface';
 export class ModalidadDatatableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Datum>;
+  @ViewChild(MatTable) table!: MatTable<DatumMo>;
   dataSource = new ModalidadDatatableDataSource();
   dataSubscription!: Subscription;
 
@@ -59,7 +59,7 @@ export class ModalidadDatatableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  eliminarModalidad(modalidad: Datum): void {
+  eliminarModalidad(modalidad: DatumMo): void {
     // const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta carrera?');
     // if (confirmacion) {
     this.modalidadService.delete(modalidad.id).subscribe(
@@ -82,7 +82,7 @@ export class ModalidadDatatableComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  navigateEditarModalidad(modalidad: Datum) {
+  navigateEditarModalidad(modalidad: DatumMo) {
     this.router.navigateByUrl(`dashboard/editar-modalidad/${modalidad.id}`);
   }
 

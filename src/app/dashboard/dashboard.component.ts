@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LoginService } from '@services/login/login.service';
 import { SidemenuComponent } from '@shared/components/sidemenu/sidemenu.component';
 
 @Component({
@@ -9,6 +10,12 @@ import { SidemenuComponent } from '@shared/components/sidemenu/sidemenu.componen
   templateUrl: './dashboard.component.html',
 })
 
-export default class DashboardComponent {
+export default class DashboardComponent implements OnInit{
+
+  constructor(private loginService:LoginService) { }
+
+  ngOnInit(): void {
+    console.log('Valor del token:', this.loginService.userToken);
+  }
 
 }

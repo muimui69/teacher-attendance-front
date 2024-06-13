@@ -9,6 +9,8 @@ import ModalidadComponent from './pages/modalidad/modalidad.component';
 import AulaComponent from './pages/aula/aula.component';
 import PeriodoComponent from './pages/periodo/periodo.component';
 import ModuloComponent from './pages/modulo/modulo.component';
+import licenciaDocenteComponent from './pages/docente/licencia-docente/licencia-docente.component';
+import AsignarHorarioDocenteComponent from './pages/docente/asignar-horario-docente/asignar-horario-docente.component';
 
 export const routes: Routes = [
     {
@@ -33,8 +35,18 @@ export const routes: Routes = [
                     },
                     {
                         path: 'asignar-materia-docente',
-                        title: 'Asignar Materia',
+                        title: 'Carga horaria',
                         component: AsignarMateriaDocenteComponent,
+                    },
+                    {
+                      path: 'asignar-detalle-carga-docente',
+                      title: 'Detalle carga horaria',
+                      component: AsignarHorarioDocenteComponent,
+                    },
+                    {
+                      path: 'licencia-docente',
+                      title: 'Solicitar licencia',
+                      component: licenciaDocenteComponent,
                     },
                 ]
             },

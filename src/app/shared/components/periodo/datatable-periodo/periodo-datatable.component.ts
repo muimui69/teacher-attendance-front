@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PeriodoDatableDataSource } from './periodo-datatable-datasource';
 import { PeriodoService } from '@services/periodo.service';
-import { Datum } from '@interfaces/periodo.interface';
+import { DatumP } from '@interfaces/periodo.interface';
 
 
 @Component({
@@ -25,7 +25,7 @@ import { Datum } from '@interfaces/periodo.interface';
 export class PeriodoDatatableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Datum>;
+  @ViewChild(MatTable) table!: MatTable<DatumP>;
   dataSource = new PeriodoDatableDataSource();
   dataSubscription!: Subscription;
 
@@ -58,21 +58,21 @@ export class PeriodoDatatableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  eliminarPeriodo(periodo: Datum): void {
+  eliminarPeriodo(periodo: DatumP): void {
     // const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta carrera?');
     // if (confirmacion) {
     this.periodoService.delete(periodo.id).subscribe(
       () => {
         this.snackBar.open('Periodo eliminada exitosamente!', 'Cerrar', {
-          duration: 3000, 
-          horizontalPosition: 'right', 
-          verticalPosition: 'bottom', 
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
         });
       },
       (error) => {
         console.error('Error al eliminar el Periodo:', error);
         this.snackBar.open('Error al crear el Periodo', 'Cerrar', {
-          duration: 3000, 
+          duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'bottom',
         });
@@ -81,7 +81,7 @@ export class PeriodoDatatableComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  navigateEditarPeriodo(periodo: Datum) {
+  navigateEditarPeriodo(periodo: DatumP) {
     this.router.navigateByUrl(`dashboard/editar-periodo/${periodo.id}`);
   }
 

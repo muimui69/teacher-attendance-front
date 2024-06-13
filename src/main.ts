@@ -14,6 +14,9 @@ import { IconService } from './app/shared/services/icon.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideServiceWorker } from '@angular/service-worker';
 import { isDevMode } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptorService } from '@services/login/error-interceptor.service';
+import { JwtInterceptorService } from '@services/login/jwt-interceptor.service';
 
 const iconService = new IconService();
 const icons = iconService.getIcons();
@@ -31,5 +34,5 @@ const extendedAppConfig = {
   ]
 };
 
-bootstrapApplication(AppComponent, extendedAppConfig)
+bootstrapApplication(AppComponent, extendedAppConfig, )
   .catch((err) => console.error(err));
