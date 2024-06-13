@@ -9,9 +9,8 @@ import { LucideAngularModule } from 'lucide-angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AulaService } from '@services/aula.service';
 import { MateriaDatableDataSource } from './materia-datatable-datasource';
-import { Datum } from '@interfaces/materia.interface';
+import { DatumM } from '@interfaces/materia.interface';
 import { MateriaService } from '@services/materia.service';
 
 
@@ -23,10 +22,10 @@ import { MateriaService } from '@services/materia.service';
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
 })
 export class MateriaDatatableComponent implements OnInit, AfterViewInit {
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Datum>;
+  @ViewChild(MatTable) table!: MatTable<DatumM>;
   dataSource = new MateriaDatableDataSource();
   dataSubscription!: Subscription;
 
@@ -60,21 +59,21 @@ export class MateriaDatatableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  eliminarMateria(materia: Datum): void {
+  eliminarMateria(materia: DatumM): void {
     // const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta carrera?');
     // if (confirmacion) {
     this.materiaService.delete(materia.id).subscribe(
       () => {
         this.snackBar.open('Materia eliminada exitosamente!', 'Cerrar', {
-          duration: 3000, 
-          horizontalPosition: 'right', 
-          verticalPosition: 'bottom', 
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
         });
       },
       (error) => {
         console.error('Error al eliminar el Materia:', error);
         this.snackBar.open('Error al eliminar el Materia', 'Cerrar', {
-          duration: 3000, 
+          duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'bottom',
         });
@@ -83,7 +82,7 @@ export class MateriaDatatableComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  navigateEditarMateria(materia: Datum) {
+  navigateEditarMateria(materia: DatumM) {
     this.router.navigateByUrl(`dashboard/editar-materia/${materia.id}`);
   }
 

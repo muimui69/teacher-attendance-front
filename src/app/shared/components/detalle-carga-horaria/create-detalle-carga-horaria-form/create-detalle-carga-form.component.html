@@ -1,0 +1,130 @@
+<div class="min-h-screen">
+
+  <button
+    class="absolute left-4 top-4 md:left-8 md:top-8 flex items-center text-xs"
+    (click)="volverAtras()">
+    <lucide-icon
+      [name]=" this.getIconData('chevronLeft')"
+      class="w-6 h-6 mr-2">
+    </lucide-icon>
+    Atras
+  </button>
+
+  <div
+    class="container flex h-screen w-screen flex-col items-center justify-center">
+
+    <div
+      class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px] rounded-md border shadow-xl">
+      <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Crear detalle carga horaria</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Ingrese la hora de inicio</mat-label>
+                  <input matInput formControlName="hora_inicio" type="time" placeholder="HH:MM">
+                  <mat-hint>HH:MM</mat-hint>
+                  <mat-error *ngIf="addressForm.controls['hora_inicio'].hasError('required')">
+                    La hora de inicio es requerida
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Ingrese la hora de fin</mat-label>
+                  <input matInput formControlName="hora_fin" type="time" placeholder="HH:MM">
+                  <mat-hint>HH:MM</mat-hint>
+                  <mat-error *ngIf="addressForm.controls['hora_fin'].hasError('required')">
+                    La hora de fin es requerida
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Seleccione una cargaHoraria</mat-label>
+                <mat-select formControlName="cargaHorariaId">
+                  <mat-option *ngFor="let cargahoraria of cargahorarias" [value]="cargahoraria.id">
+                    <div >
+                      <div><b>{{cargahoraria.id}}</b></div>
+                    </div>
+                  </mat-option>
+                </mat-select>
+                @if (addressForm.controls['cargaHorariaId'].hasError('required')) {
+                  <mat-error>Carga Horaria
+                    <strong>requerido</strong></mat-error>
+                  }
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Seleccione un aula</mat-label>
+                <mat-select formControlName="aulaId">
+                  <mat-option *ngFor="let aula of aulas" [value]="aula.id">
+                    <div >
+                      <div><b>{{aula.nombre}}</b></div>
+                    </div>
+                  </mat-option>
+                </mat-select>
+                @if (addressForm.controls['aulaId'].hasError('required')) {
+                  <mat-error>Aula
+                    <strong>requerido</strong></mat-error>
+                  }
+              </mat-form-field>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Seleccione un dia</mat-label>
+                  <mat-select formControlName="diaId">
+                    <mat-option *ngFor="let dia of dias" [value]="dia.id">
+                      <div >
+                        <div><b>{{dia.nombre}}</b></div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+                  @if (addressForm.controls['diaId'].hasError('required')) {
+                    <mat-error>Dia
+                      <strong>requerido</strong></mat-error>
+                    }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Seleccione un grupo</mat-label>
+                  <mat-select formControlName="grupoId">
+                    <mat-option *ngFor="let grupo of grupos" [value]="grupo.id">
+                      <div >
+                        <div><b>{{grupo.nombre}}</b></div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+                  @if (addressForm.controls['grupoId'].hasError('required')) {
+                    <mat-error>Grupo
+                      <strong>requerido</strong></mat-error>
+                    }
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit">Guardar
+              materia</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

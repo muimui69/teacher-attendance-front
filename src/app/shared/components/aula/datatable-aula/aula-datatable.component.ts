@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AulaDatableDataSource } from './aula-datatable-datasource';
-import { Datum } from '@interfaces/aula.interface';
+import { DatumA } from '@interfaces/aula.interface';
 import { AulaService } from '@services/aula.service';
 
 
@@ -22,10 +22,10 @@ import { AulaService } from '@services/aula.service';
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, MaterialModule, LucideAngularModule]
 })
 export class AulaDatatableComponent implements OnInit, AfterViewInit {
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Datum>;
+  @ViewChild(MatTable) table!: MatTable<DatumA>;
   dataSource = new AulaDatableDataSource();
   dataSubscription!: Subscription;
 
@@ -59,21 +59,21 @@ export class AulaDatatableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  eliminarAula(aula: Datum): void {
+  eliminarAula(aula: DatumA): void {
     // const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar esta carrera?');
     // if (confirmacion) {
     this.aulaService.delete(aula.id).subscribe(
       () => {
         this.snackBar.open('Aula eliminada exitosamente!', 'Cerrar', {
-          duration: 3000, 
-          horizontalPosition: 'right', 
-          verticalPosition: 'bottom', 
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
         });
       },
       (error) => {
         console.error('Error al eliminar el Aula:', error);
         this.snackBar.open('Error al eliminar el Aula', 'Cerrar', {
-          duration: 3000, 
+          duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'bottom',
         });
@@ -82,7 +82,7 @@ export class AulaDatatableComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  navigateEditarAula(aula: Datum) {
+  navigateEditarAula(aula: DatumA) {
     this.router.navigateByUrl(`dashboard/editar-aula/${aula.id}`);
   }
 

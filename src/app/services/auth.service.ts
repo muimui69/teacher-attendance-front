@@ -6,7 +6,7 @@ import { ApiService } from './api/api.service';
 })
 export class AuthService {
 
-  constructor(private apiService: ApiService) {} 
+  constructor(private apiService: ApiService) {}
 
   login(credentials: any) {
     // Llama al método post del ApiService para enviar las credenciales al endpoint de login
@@ -17,4 +17,6 @@ export class AuthService {
     // Llama al método get del ApiService para enviar una solicitud de logout al endpoint correspondiente
     return this.apiService.get<any>('logout');
   }
+
+
 }

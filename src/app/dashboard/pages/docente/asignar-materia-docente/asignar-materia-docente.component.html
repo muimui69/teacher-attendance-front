@@ -1,1 +1,8 @@
-<p>asignar-materia works!</p>
+<div class="grid items-start gap-8">
+  <app-title heading="Carga Horaria" text="Administra la informacion de las cargas horaria." >
+     <button mat-flat-button color="accent" (click)="navigateCrearDetalleCarga()">Registrar</button>
+  </app-title>
+  <div className="container overflow-x-auto">
+     <app-carga-horaria-datatable/>
+  </div>
+</div>

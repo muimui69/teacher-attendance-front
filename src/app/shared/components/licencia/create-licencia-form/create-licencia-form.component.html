@@ -1,0 +1,73 @@
+<div class="min-h-screen">
+
+  <button
+    class="absolute left-4 top-4 md:left-8 md:top-8 flex items-center text-xs"
+    (click)="volverAtras()">
+    <lucide-icon
+      [name]=" this.getIconData('chevronLeft')"
+      class="w-6 h-6 mr-2">
+    </lucide-icon>
+    Atras
+  </button>
+
+  <div
+    class="container flex h-screen w-screen flex-col items-center justify-center">
+
+    <div
+      class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px] rounded-md border shadow-xl">
+      <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Registrar usuario</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="titulo" formControlName="titulo">
+                  @if (addressForm.controls['titulo'].hasError('required')) {
+                  <mat-error>el Nombre del usuario es
+                    <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="descripcion" formControlName="descripcion">
+                  @if (addressForm.controls['descripcion'].hasError('required')) {
+                  <mat-error>el Email del usuario es
+                    <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Ingrese la fecha</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="MM/DD/YYYY">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-error *ngIf="addressForm.controls['fecha'].hasError('matDatepickerParse')">
+                    Fecha inválida
+                  </mat-error>
+                  <mat-error *ngIf="addressForm.controls['fecha'].hasError('required')">
+                    La fecha es requerida
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit">Guardar
+              Usuario</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

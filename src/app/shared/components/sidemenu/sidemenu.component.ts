@@ -74,16 +74,17 @@
 
 
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource, MatTreeNode, MatTreeNodeToggle } from '@angular/material/tree';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { routes as dashboardRoutes } from '../../../dashboard/dashboard-routing.module';
 import { IconService } from '../../services/icon.service';
 import { CommonModule } from '@angular/common';
 import { LucideIconData } from 'lucide-angular/icons/types';
 import { LucideAngularModule } from 'lucide-angular';
 import { MaterialModule } from '../material/material.module';
+import { LoginService } from '@services/login/login.service';
 
 interface MenuItem {
   title: string;
@@ -100,11 +101,13 @@ interface MenuItem {
   imports: [CommonModule, MaterialModule, RouterModule, LucideAngularModule, MatTreeNode, MatTreeNodeToggle]
 })
 
-export class SidemenuComponent {
+export class SidemenuComponent implements OnInit{
+
+  userLoginOn:boolean=false;
 
   sidebarItems: MenuItem[] = [];
 
-  constructor(private iconService: IconService) {
+  constructor(private iconService: IconService, private loginService:LoginService, private router:Router) {
     const sidebarItems = this.organizeRoutes(dashboardRoutes.find(route => route.path === '')?.children || []);
     console.log(sidebarItems);
     this.sidebarItems = sidebarItems;
@@ -149,5 +152,22 @@ export class SidemenuComponent {
         })) || []
     };
   }
+
+  ngOnInit(): void {
+    this.loginService.currentUserLoginOn.subscribe(
+      {
+        next:(userLoginOn) => {
+          this.userLoginOn=userLoginOn;
+        }
+      }
+    )
+  }
+
+  logout()
+  {
+    this.loginService.logout();
+    this.router.navigate(['/home'])
+  }
+
 }
 

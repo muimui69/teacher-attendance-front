@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTreeModule, MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { files } from './example-data';
+import { LoginService } from '../../../services/login/login.service';
+import { Router } from '@angular/router';
 
 /** File node data with possible child nodes. */
 export interface FileNode {
@@ -41,7 +43,7 @@ export class SidemenuTreeComponent {
   /** The MatTreeFlatDataSource connects the control and flattener to provide data. */
   dataSource: MatTreeFlatDataSource<FileNode, FlatTreeNode>;
 
-  constructor() {
+  constructor( ) {
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
       this.getLevel,
@@ -82,4 +84,5 @@ export class SidemenuTreeComponent {
   getChildren(node: FileNode): FileNode[] | null | undefined {
     return node.children;
   }
+
 }

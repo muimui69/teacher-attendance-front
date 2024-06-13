@@ -1,0 +1,105 @@
+<div class="min-h-screen">
+
+  <button
+    class="absolute left-4 top-4 md:left-8 md:top-8 flex items-center text-xs"
+    (click)="volverAtras()">
+    <lucide-icon
+      [name]=" this.getIconData('chevronLeft')"
+      class="w-6 h-6 mr-2">
+    </lucide-icon>
+    Atras
+  </button>
+
+  <div
+    class="container flex h-screen w-screen flex-col items-center justify-center">
+
+    <div
+      class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px] rounded-md border shadow-xl">
+      <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Crear carga horaria</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Seleccione un docente</mat-label>
+                <mat-select formControlName="id_docente">
+                  <mat-option *ngFor="let docente of docentes" [value]="docente.id">
+                    <div >
+                      <div><b>{{docente.nombre}}</b></div>
+                    </div>
+                  </mat-option>
+                </mat-select>
+                @if (addressForm.controls['id_docente'].hasError('required')) {
+                  <mat-error>Docente
+                    <strong>requerido</strong></mat-error>
+                  }
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Seleccione una materia</mat-label>
+                <mat-select formControlName="id_materia">
+                  <mat-option *ngFor="let materia of materias" [value]="materia.id">
+                    <div >
+                      <div><b>{{materia.nombre}}</b></div>
+                    </div>
+                  </mat-option>
+                </mat-select>
+                @if (addressForm.controls['id_materia'].hasError('required')) {
+                  <mat-error>Materia
+                    <strong>requerido</strong></mat-error>
+                  }
+              </mat-form-field>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Seleccione </mat-label>
+                  <mat-select formControlName="id_modalidad">
+                    <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.id">
+                      <div >
+                        <div><b>{{modalidad.nombre}}</b></div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+                  @if (addressForm.controls['id_modalidad'].hasError('required')) {
+                    <mat-error>Modalidad
+                      <strong>requerido</strong></mat-error>
+                    }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Seleccione una carrera</mat-label>
+                  <mat-select formControlName="id_periodo">
+                    <mat-option *ngFor="let periodo of periodos" [value]="periodo.id">
+                      <div >
+                        <div><b>{{periodo.nombre}}</b></div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+                  @if (addressForm.controls['id_periodo'].hasError('required')) {
+                    <mat-error>Carrera para la materia es
+                      <strong>requerido</strong></mat-error>
+                    }
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit">Guardar
+              materia</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

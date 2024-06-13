@@ -6,10 +6,10 @@ export interface PostModalidadParams {
 export interface GetModalidadReponse {
     statusCode: number;
     message:    string;
-    data:       Datum[];
+    data:       DatumMo[];
 }
 
-export interface Datum {
+export interface DatumMo {
     id:          number;
     nombre:      string;
     descripcion: string;

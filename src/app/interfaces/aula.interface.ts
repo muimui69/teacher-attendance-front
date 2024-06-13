@@ -6,10 +6,10 @@ export interface PostAulaParams {
 export interface GetAulaResponse {
     statusCode: number;
     message:    string;
-    data:       Datum[];
+    data:       DatumA[];
 }
 
-export interface Datum {
+export interface DatumA {
     id:     number;
     nombre: number;
     modulo: Modulo;
