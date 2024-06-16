@@ -1,9 +1,22 @@
 <div class="grid items-start gap-8">
-    <app-title heading="Materias" text="Administra las diferentes materias." >
-        <button mat-flat-button color="accent"
-        (click)="navigateCrearMateria()">Crear materia</button>
+    <app-title heading="Materias" text="Administra las diferentes materias.">
+        <div class="hidden sm:md:lg:block">
+            <button mat-flat-button color="accent"
+                (click)="navigateCrearMateria()">Crear materia</button>
+        </div>
     </app-title>
-    <div className="container overflow-x-auto">
-        <app-materia-datatable />
+
+    <div class="sm:md:block lg:hidden px-4">
+        <button mat-flat-button class="ml-2 w-full" color="accent"
+            (click)="navigateCrearMateria()">Crear materia</button>
     </div>
- </div>
+
+    <div class="flex-1 overflow-hidden overflow-x-auto">
+        <div class="container mx-auto md:lg:px-8 px-4">
+            <div class="max-w-full overflow-x-auto">
+                <app-materia-datatable />
+            </div>
+        </div>
+    </div>
+
+</div>

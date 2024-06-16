@@ -1,12 +1,29 @@
-<div class="flex min-h-screen flex-col space-y-6">
-    <div class="container grid flex-1 gap-12 md:lg:grid-cols-[200px_1fr] grid-cols-[40px_1fr]  mt-10">
-      <!-- <p *ngIf="!userLoginOn" class="alert alert-danger">Usuario NO autenticado</p> -->
-      <!-- <p *ngIf="userLoginOn" class="alert alert-success">Usuario Autenticado</p> -->
-        <aside class="md:lg:w-[200px] w-[40px] flex-col flex">
-            <app-sidemenu/>
-        </aside>
-        <div class="flex w-full flex-1 flex-col overflow-hidden ">
-            <router-outlet/>
+<!-- <div class="flex min-h-screen flex-col  "> -->
+<!-- <div -->
+<!-- class="grid flex-1 gap-12 md:lg:grid-cols-[200px_1fr] grid-cols-[40px_1fr]  mt-10 "> -->
+<!-- <p *ngIf="!userLoginOn" class="alert alert-danger">Usuario NO autenticado</p> -->
+<!-- <p *ngIf="userLoginOn" class="alert alert-success">Usuario Autenticado</p> -->
+<!-- <aside class="md:lg:w-[200px] w-[40px] flex-col flex"> -->
+<!-- <app-sidemenu /> -->
+<!-- </aside> -->
+
+<!-- <div class="container flex w-full flex-col overflow-hidden overflow-x-auto  ">
+            <router-outlet />
         </div>
     </div>
+</div> -->
+
+<div class="flex min-h-screen">
+
+     <!-- <p *ngIf="!userLoginOn" class="alert alert-danger">Usuario NO autenticado</p>  -->
+<!-- <p *ngIf="userLoginOn" class="alert alert-success">Usuario Auten -->
+
+    <aside class="w-20 lg:w-64 flex flex-col">
+        <app-sidemenu></app-sidemenu>
+    </aside>
+
+    <div class="container flex w-full flex-col overflow-hidden max-w-full mt-10">
+        <router-outlet />
+    </div>
+    
 </div>

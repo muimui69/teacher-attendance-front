@@ -74,7 +74,7 @@
 
 
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource, MatTreeNode, MatTreeNodeToggle } from '@angular/material/tree';
 import { Router, RouterModule, Routes } from '@angular/router';
@@ -85,6 +85,7 @@ import { LucideIconData } from 'lucide-angular/icons/types';
 import { LucideAngularModule } from 'lucide-angular';
 import { MaterialModule } from '../material/material.module';
 import { LoginService } from '@services/login/login.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 interface MenuItem {
   title: string;
@@ -94,6 +95,11 @@ interface MenuItem {
   children?: MenuItem[];
 }
 
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
+
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
@@ -101,13 +107,12 @@ interface MenuItem {
   imports: [CommonModule, MaterialModule, RouterModule, LucideAngularModule, MatTreeNode, MatTreeNodeToggle]
 })
 
-export class SidemenuComponent implements OnInit{
-
-  userLoginOn:boolean=false;
+export class SidemenuComponent implements OnInit {
+  userLoginOn: boolean = true;
 
   sidebarItems: MenuItem[] = [];
 
-  constructor(private iconService: IconService, private loginService:LoginService, private router:Router) {
+  constructor(private iconService: IconService, private loginService: LoginService, private router: Router) {
     const sidebarItems = this.organizeRoutes(dashboardRoutes.find(route => route.path === '')?.children || []);
     console.log(sidebarItems);
     this.sidebarItems = sidebarItems;
@@ -153,21 +158,51 @@ export class SidemenuComponent implements OnInit{
     };
   }
 
+
   ngOnInit(): void {
+    this.checkWindowSize(); 
     this.loginService.currentUserLoginOn.subscribe(
       {
-        next:(userLoginOn) => {
-          this.userLoginOn=userLoginOn;
+        next: (userLoginOn) => {
+          this.userLoginOn = userLoginOn;
         }
       }
     )
   }
 
-  logout()
-  {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkWindowSize(); // Verificar el tamaño de la ventana cuando cambia
+  }
+
+  checkWindowSize() {
+    // Obtener el ancho de la ventana actual
+    const screenWidth = window.innerWidth;
+
+    // Definir el punto de quiebre para colapsar (ejemplo, ancho menor o igual a 768px)
+    const breakpoint = 768 ;
+    const breakpointTwo =  1024;
+
+    // Inicializar collapsed según el tamaño de la pantalla
+    this.collapsed = screenWidth <= breakpoint || (screenWidth <= breakpointTwo  );
+  }
+
+  logout() {
     this.loginService.logout();
     this.router.navigate(['/home'])
   }
+
+  collapsed = false
+  screenWidth = 0
+
+
+  toggleCollapse() {
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({collapsed:this.collapsed,screenWidth:this.screenWidth});
+  }
+
+  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
+
 
 }
 

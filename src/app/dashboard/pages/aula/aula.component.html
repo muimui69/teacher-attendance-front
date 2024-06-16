@@ -1,9 +1,22 @@
 <div class="grid items-start gap-8">
-    <app-title heading="Aulas" text="Administra las diferentes aulas." >
-        <button mat-flat-button color="accent"
-        (click)="navigateCrearAula()">Crear periodo</button>
+    <app-title heading="Aulas" text="Administra las diferentes aulas.">
+        <div class="hidden sm:md:lg:block">
+            <button mat-flat-button color="accent"
+                (click)="navigateCrearAula()">Crear aula</button>
+        </div>
     </app-title>
-    <div className="container overflow-x-auto">
-        <app-aula-datatable />
+    <div class="sm:md:block lg:hidden px-4">
+        <button mat-flat-button color="accent" class="ml-2 w-full"
+            (click)="navigateCrearAula()">Crear aula</button>
     </div>
- </div>
+
+
+    <div class="flex-1 overflow-hidden overflow-x-auto">
+        <div class="container mx-auto px-4">
+            <div class="max-w-full overflow-x-auto">
+                <app-aula-datatable />
+
+            </div>
+        </div>
+    </div>
+</div>

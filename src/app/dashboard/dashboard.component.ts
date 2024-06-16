@@ -1,8 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginService } from '@services/login/login.service';
 import { SidemenuComponent } from '@shared/components/sidemenu/sidemenu.component';
+
+
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -18,5 +24,7 @@ export default class DashboardComponent implements OnInit{
   ngOnInit(): void {
     console.log('Valor del token:', this.loginService.userToken);
   }
+
+
 
 }

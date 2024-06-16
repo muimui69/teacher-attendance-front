@@ -27,12 +27,13 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row">
         <div class="flex justify-end px-10 space-x-2">
-            <button mat-mini-fab color="primary" (click)="navigateEditarUsuario(row)">
-              <lucide-icon
-                [name]=" this.getIconData('edit')"
-                class="w-4 h-4">
-              </lucide-icon>
-            </button>
+          <button mat-mini-fab color="primary"
+            (click)="navigateEditarUsuario(row)">
+            <lucide-icon
+              [name]=" this.getIconData('edit')"
+              class="w-4 h-4">
+            </lucide-icon>
+          </button>
           <button mat-mini-fab color="accent" (click)="eliminarUsuario(row)">
             <lucide-icon
               [name]=" this.getIconData('delete') "
@@ -46,7 +47,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
   <mat-paginator #paginator
     [length]="dataSource.data.length"
     [pageIndex]="0"

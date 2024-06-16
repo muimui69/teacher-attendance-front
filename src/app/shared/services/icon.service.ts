@@ -15,7 +15,9 @@ import {
   ChevronLeft,
   CalendarRange,
   LogOut,
-  Group
+  Group,
+  Menu,
+  X
 } from 'lucide-angular';
 import { LucideIcons } from 'lucide-angular/icons/types';
 
@@ -40,7 +42,9 @@ export class IconService {
     chevronLeft: ChevronLeft,
     calendar:CalendarRange,
     logOut:LogOut,
-    group:Group
+    group:Group,
+    menuOpen:Menu,
+    menuClose:X
   };
 
   constructor() { }
