@@ -19,6 +19,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptorService } from '@services/login/error-interceptor.service';
 import { JwtInterceptorService } from '@services/login/jwt-interceptor.service';
 
+// Habilitar el modo de producción si no está en desarrollo
+if (environment.production) {
+  enableProdMode();
+}
+
 const iconService = new IconService();
 const icons = iconService.getIcons();
 

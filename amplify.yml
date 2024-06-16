@@ -1,0 +1,18 @@
+version: 1
+frontend:
+    phases:
+        preBuild:
+            commands:
+                - 'nvm install 20.14.0'
+                - 'nvm use 20.14.0'
+                - 'yarn install'
+        build:
+            commands:
+                - 'yarn run build --configuration=production'
+    artifacts:
+        baseDirectory: dist/teacher-attendance-front/browser
+        files:
+            - '**/*'
+    cache:
+        paths:
+            - 'node_modules/**/*'
