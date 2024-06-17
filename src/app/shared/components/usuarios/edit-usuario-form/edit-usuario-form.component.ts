@@ -58,7 +58,7 @@ export class EditUsuarioComponent implements OnInit {
         nombre: [usuario.data?.nombre as never, Validators.required],
         apellido: [usuario.data?.apellido as never, Validators.required],
         email: [usuario.data?.email as never, Validators.required],
-        password: [usuario.data?.password as never, Validators.required],
+        password: [null, Validators.required],
       });
     });
   }
