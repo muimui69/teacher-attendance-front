@@ -57,6 +57,11 @@ export class UserSigninFormComponent implements OnInit {
         },
         error: (errorData) => {
           console.error(errorData);
+          this.snackBar.open('Error al inicar sesion', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
           this.loginError=errorData;
         },
         complete: () => {

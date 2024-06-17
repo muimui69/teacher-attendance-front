@@ -28,7 +28,7 @@ export class LicenciaDatatableComponent implements OnInit, AfterViewInit {
   dataSource = new LicenciaDatableDataSource();
   dataSubscription!: Subscription;
 
-  displayedColumns = ['titulo', 'fecha', 'nombre_c' , 'acciones'];
+  displayedColumns = ['titulo', 'fecha', 'nombre_c' ];
 
   constructor(
     private licenciaService: LicenciaService,

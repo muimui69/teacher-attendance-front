@@ -1,8 +1,21 @@
 <div class="grid items-start gap-8">
-  <app-title heading="Carga Horaria" text="Administra la informacion de las cargas horaria." >
-     <button mat-flat-button color="accent" (click)="navigateCrearDetalleCarga()">Registrar</button>
-  </app-title>
-  <div className="container overflow-x-auto">
-     <app-carga-horaria-datatable/>
-  </div>
+   <app-title heading="Carga Horaria"
+      text="Administra la informacion de las cargas horaria.">
+      <div class="hidden sm:md:lg:block">
+         <button mat-flat-button color="accent"
+            (click)="navigateCrearDetalleCarga()">Registrar</button>
+      </div>
+   </app-title>
+   <div class="sm:md:block lg:hidden px-4">
+      <button mat-flat-button color="accent" class="ml-2 w-full"
+         (click)="navigateCrearDetalleCarga()">Crear aula</button>
+   </div>
+
+   <div class="flex-1 overflow-hidden overflow-x-auto">
+      <div class="container mx-auto px-4">
+         <div class="max-w-full overflow-x-auto">
+            <app-carga-horaria-datatable />
+         </div>
+      </div>
+   </div>
 </div>
